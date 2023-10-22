@@ -1,0 +1,21 @@
+{
+    "files.associations": {
+        "*.sv": "verilog",
+        "displaymanager.h": "c",
+        "multitaskingaccumulator.h": "c",
+        "imessageadder.h": "c",
+        "idisplay.h": "c",
+        "semaphore.h": "c",
+        "acquisitionmanager.h": "c",
+        "fcntl.h": "c",
+        "unistd.h": "c",
+        "iacquisitionmanager.h": "c",
+        "messageadder.h": "c",
+        "stdio.h": "c",
+        "pthread.h": "c",
+        "debug.h": "c",
+        "*.c2": "c",
+        "*.c1": "c"
+    },
+    "editor.formatOnSave": true
+}

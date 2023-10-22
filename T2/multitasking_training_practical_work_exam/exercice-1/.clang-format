@@ -1,0 +1,6 @@
+{ BasedOnStyle: LLVM,
+AlignTrailingComments: false,
+ColumnLimit: 120,
+BreakBeforeBraces: Attach,
+IndentWidth: 4,
+SpacesInParentheses: true }
