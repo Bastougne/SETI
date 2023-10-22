@@ -1,0 +1,467 @@
+% % TP Servomécanisme
+% % M2 SETI
+% 
+% clear all
+% close all
+% clc
+% format short g
+% 
+% cd('C:\Temp\UE520')
+% 
+% Te = 1E-4;
+% monAmplitude = 10; % en volts
+% maPeriode = 8; % en secondes
+% largeurImpulsion = 0.5; % en %
+% monRetard = 1; % en secondes
+% 
+% % récupération des données expérimentales
+% load('C:\Temp\UE520\TP_SETI_IdentBO_01.mat')
+% 
+% tTemps = TP_SETI_IdentBO_01.X.Data;
+% monEntree = TP_SETI_IdentBO_01.Y(1).Data;
+% maSortie = TP_SETI_IdentBO_01.Y(2).Data;
+% 
+% figure(1);
+% clf;
+% plot(tTemps, monEntree, 'b')
+% hold on
+% plot(tTemps, maSortie, 'r')
+% xlabel('Temps(sec)')
+% ylabel('Signal num')
+% hold off
+% 
+% na = 2;
+% nb = 2;
+% dd = 1;
+% 
+% somme1 = zeros(na+nb,na+nb);
+% somme2 = zeros(na+nb,1);
+% 
+% nzpad = max ([na,nb+dd]);
+% NN = length(maSortie);
+% 
+% 
+% for kk = nzpad+1:NN
+%     phi = [-maSortie(kk-1:-1:kk-na)'; monEntree(kk-dd-1:-1:kk-dd-nb)'];
+%     somme1 = somme1 + phi*phi';
+%     somme2 = somme2 + phi*maSortie(kk);
+% end
+% 
+% thetaChapeau = somme1\somme2;
+% coeffA = thetaChapeau(1:na);
+% coeffB = thetaChapeau(na+1:na+nb);
+% 
+% num = [coeffB'];
+% den = [1,coeffA'];
+% 
+% z=tf('z',Te);
+% sys_d = tf(num,den,Te);
+% sys_d.inputDelay=dd;
+% 
+% tTemps_d = 0:Te:(NN-1)*Te;
+% figure(1);
+% hold on;
+% lsim(sys_d,monEntree,tTemps_d);
+% hold off;
+% 
+% % temps mort = d
+% % b0 = 0, na = 1, nb = 1
+% % Expliquer les résultats obtenues expérimentalement
+% % sortie n'est pas la vraie valeur appluiquee au moteur, c'est la valeur numerique seuilee
+% 
+% 
+% Phi = zeros(na+nb,1);
+% SortiePredictARX = zeros(1,NN);
+% ErreurPredictARX = zeros(1,NN);
+% for kk = nzpad+1:NN
+%     Phi = [-maSortie(kk-1:-1:kk-na)'; monEntree(kk-dd-1:-1:kk-dd-nb)'];
+%     SortiePredictARX(kk) = Phi' * thetaChapeau;
+%     ErreurPredictARX(kk) = maSortie(kk) - SortiePredictARX(kk); 
+%     somme2 = somme2 + phi*maSortie(kk); % Peut-être petit phi
+% end
+% 
+% SortieModeleCommande = (lsim(sys_d,monEntree,tTemps_d))';
+% maCol1 = [210,250,150]./255;
+% figure(2);clf
+% hold on
+% pl0 = plot(tTemps_d, maSortie,'r-');
+% pl1 = plot(tTemps_d, SortieModeleCommande, 'g-', 'LineWidth', 0.5);
+% pl2 = plot(tTemps_d, SortiePredictARX, '-', 'Color', maCol1, 'LineWidth', 1);
+% 
+% % Tracé de l'histogramme de l'erreur de prédiction
+% figure(3);clf
+% hist(ErreurPredictARX,ceil(NN/1000));
+% title('erreur de prédiction')
+% 
+% % Tracé de l'histogramme de l'erreur de simulation
+% figure(4);clf
+% hist(maSortie-SortieModeleCommande,ceil(NN/1000));
+% title('erreur de simulation')
+% 
+% % Moyenne des erreurs relatives
+% mean(ErreurPredictARX/max(abs(ErreurPredictARX)));
+% mean(maSortie-SortieModeleCommande/max(abs(maSortie-SortieModeleCommande)));
+% 
+% % Deuxième démonstration ==> filtre Butterworth...
+% % Pole de l'ordre de -110 d'après les applications numériques (d'après le partie préparatoire)
+% % D'après Shannon -220 (2*pi*f*c ???) ==> fréquence 500 Hz
+% 
+% 
+% %% Filtrade des données E/S
+% %% Un filtre passe-bas du 2nd ordre
+% xxi = 0.71; 
+% ffc = 10; % Hertz, Prof a mis 5 / 10 ????
+% aalp = (2/(Te*2*pi*ffc))^2;
+% bbet = 4*xxi/(Te*2*pi*ffc);
+% hh1 = 2*(1-aalp)/(aalp+bbet+1);% Coeff du filtre
+% hh0 = (aalp-bbet+1)/(aalp+bbet+1); % Coeff du filtre
+% FPB1 = inv(aalp+bbet+1)*(z^2+2*z+1)/(z^2+hh1*z+hh0);
+% 
+% figure(5);clf;
+% bode(FPB1,'b'); grid on
+% % BARRE = FREQUENCE DE NYQUIST 
+% 
+% monEntree_f = lsim(FPB1,monEntree)'; % f = filtré
+% maSortie_f = lsim(FPB1,maSortie)';  % f = filtré
+% 
+% figure(6);clf;
+% plot(tTemps, monEntree, 'b-');
+% hold on
+% plot(tTemps, monEntree_f, 'c-'); hold off
+% 
+% 
+% figure(7);clf;
+% plot(tTemps, maSortie, 'r-');
+% hold on
+% plot(tTemps, maSortie_f , 'k-'); hold off
+% 
+% % Signal brut ==> prend le signal filtre à la base
+% % ICI NOUVEAU CODE
+% somme1_f = zeros(na+nb,na+nb);
+% somme2_f = zeros(na+nb,1);
+% 
+% nzpad_f = max ([na,nb+dd]);
+% NN_f = length(maSortie);
+% 
+% 
+% for kk = nzpad_f+1:NN_f
+%     phi_f = [-maSortie_f(kk-1:-1:kk-na)'; monEntree_f(kk-dd-1:-1:kk-dd-nb)'];
+%     somme1_f = somme1_f + phi_f*phi_f';
+%     somme2_f = somme2_f + phi_f*maSortie_f(kk);
+% end
+% 
+% thetaChapeau_f = somme1_f\somme2_f;
+% coeffA_f = thetaChapeau_f(1:na);
+% coeffB_f = thetaChapeau_f(na+1:na+nb);
+% 
+% num_f = [coeffB_f'];
+% den_f = [1,coeffA_f'];
+% 
+% z_f=tf('z',Te);
+% sys_d_f = tf(num_f,den_f,Te);
+% sys_d_f.inputDelay=dd;
+% 
+% tTemps_d_f = 0:Te:(NN_f-1)*Te;
+% figure(8);
+% hold on;
+% lsim(sys_d_f,monEntree_f,tTemps_d_f);
+% hold off;
+% 
+% % temps mort = d
+% % b0 = 0, na = 1, nb = 1
+% % Expliquer les résultats obtenues expérimentalement
+% % sortie n'est pas la vraie valeur appluiquee au moteur, c'est la valeur numerique seuilee
+% 
+% 
+% Phi_f = zeros(na+nb,1);
+% SortiePredictARX_f = zeros(1,NN_f);
+% ErreurPredictARX_f = zeros(1,NN_f);
+% for kk = nzpad_f+1:NN_f
+%     Phi_f = [-maSortie_f(kk-1:-1:kk-na)'; monEntree_f(kk-dd-1:-1:kk-dd-nb)'];
+%     SortiePredictARX_f(kk) = Phi_f' * thetaChapeau_f;
+%     ErreurPredictARX_f(kk) = maSortie_f(kk) - SortiePredictARX_f(kk);
+%     somme2_f = somme2_f + phi_f*maSortie_f(kk); % Peut-être petit phi
+% end
+% 
+% SortieModeleCommande_f = (lsim(sys_d_f,monEntree_f,tTemps_d_f))';
+% maCol1_f = [210,250,150]./255;
+% figure(9);clf
+% hold on
+% pl0 = plot(tTemps_d_f,maSortie_f,'r-');
+% pl1 = plot(tTemps_d_f, SortieModeleCommande_f, 'g-', 'LineWidth', 0.5);
+% pl2 = plot(tTemps_d_f, SortiePredictARX_f, '-', 'Color', maCol1, 'LineWidth', 1);
+% 
+% % Tracé de l'histogramme de l'erreur de prédiction
+% figure(10);clf
+% hist(ErreurPredictARX_f,ceil(NN_f/1000));
+% title('erreur de prédiction')
+% 
+% % Tracé de l'histogramme de l'erreur de simulation
+% figure(11);clf
+% hist(maSortie-SortieModeleCommande_f,ceil(NN_f/1000));
+% title('erreur de simulation')
+% 
+% % Moyenne des erreurs relatives
+% mean(ErreurPredictARX_f/max(abs(ErreurPredictARX_f)));
+% mean(maSortie-SortieModeleCommande_f/max(abs(maSortie-SortieModeleCommande_f)));
+% 
+% 
+% 
+% %%% FAIRE VARIER NA, NB, DD
+% %% na = 4, nb = 4, dd = 0
+% 
+% p1c = 2*-110;
+% p1d = exp(Te*p1c);
+% k_Omega = 1.75E-3/(2*pi/60)
+% 
+% Ke = 1/(585*2*pi/60);
+% Kv = k_Omega/Ke;
+% % Calculer pi/Te
+% %Pole du polynome auxilaire
+% p0c = 4*p1c;
+% p0d = exp(Te*p0c);
+% 
+% DD = exp(Te*-110);
+% %poly S(z) = s1.z + s0
+% s1 = (1+DD-p0d-p1d)/(Kv*(1-DD));
+% s0 = (p0d*p1d - DD)/(Kv*(1-DD));
+% 
+% %poly T(z) = t1.z + t0
+% t1 = (1-p1d)/(Kv*(1-DD));
+% t0 = -(1-p1d)*p0d/(Kv*(1-DD));
+% 
+% 
+% 
+% 
+
+% TP Servomécanisme,
+% M2 SETI, 
+% Février 2023
+
+clear all
+close all
+clc
+format short g
+
+cd('C:\Temp\UE520\')
+
+% Période d'échantillonnage
+Te = 0.001;
+
+monAmplitude = 3.5; % en Volt
+maPeriode = 8; % en seconde
+largeurImpulsion = 50; % fraction de la période
+monRetard = 1; % en seconde
+
+% Récupération des données expérimentales
+load('C:\Temp\UE520\TPSETI_IdentBO_01.mat')
+
+ttemps = TPSETI_IdentBO_01.X.Data;
+MonEntree = TPSETI_IdentBO_01.Y(1).Data;
+MaSortie = TPSETI_IdentBO_01.Y(2).Data;
+
+figure(1);clf;
+plot(ttemps,MonEntree,'b')
+hold on
+plot(ttemps,MaSortie,'r')
+xlabel('temps (sec)')
+ylabel('Signal Num')
+hold off
+
+% Initialisation de l'estimateur MC, de l'ARX
+Na = 4;
+Nb = 4;
+dd = 0;
+Somme1 = zeros(Na+Nb,Na+Nb);
+Somme2 = zeros(Na+Nb,1);
+
+Nzpad = max([Na,Nb+dd]);
+NN = length(MaSortie);
+for kk = Nzpad+1:NN
+    Phi = [-MaSortie(kk-1:-1:kk-Na)';...
+        MonEntree(kk-dd-1:-1:kk-dd-Nb)'];
+    Somme1 = Somme1 + Phi*Phi';
+    Somme2 = Somme2 + Phi*MaSortie(kk);
+end
+
+ThetaChapeau = Somme1\Somme2;
+CoefA = ThetaChapeau(1:Na);
+CoefB = ThetaChapeau(Na+1:Na+Nb);
+
+Num = [0,CoefB'];
+Den = [1,CoefA'];
+
+z=tf('z',Te);
+Sys_d = tf(Num,Den,Te);Sys_d.InputDelay=dd;
+
+ttemps_d = 0:Te:(NN-1)*Te;
+figure(1);
+hold on;
+lsim(Sys_d,MonEntree,ttemps_d);
+hold off
+
+Phi = zeros(Na+Nb,1);
+SortiePrediteARX = zeros(1,NN);
+ErreurPredictionARX = zeros(1,NN);
+for kk = Nzpad+1:NN
+    Phi = [-MaSortie(kk-1:-1:kk-Na)';...
+        MonEntree(kk-dd-1:-1:kk-dd-Nb)'];
+    SortiePrediteARX(kk) = Phi'*ThetaChapeau;
+    ErreurPredictionARX(kk) = MaSortie(kk)-...
+        SortiePrediteARX(kk);
+end
+SortieModeleCde = (lsim(Sys_d,MonEntree,ttemps_d))';
+MaCol1 = [010,150,220]./255; % Couleur vert foncé
+figure(2);clf
+hold on
+pl0 = plot(ttemps_d,MaSortie,'r-');
+pl1 = plot(ttemps_d,SortieModeleCde,'g-',...
+    'LineWidth',0.5);
+pl2 = plot(ttemps_d,SortiePrediteARX,'-','Color',...
+    MaCol1,'LineWidth',1);
+
+% Tracé de l'histogramme de l'erreur de prédiction
+figure(3);clf
+hist(ErreurPredictionARX,ceil(NN/1000))
+title('erreur de prédiction')
+% Tracé de l'histogramme de l'erreur de simulation
+figure(4);clf
+hist((MaSortie-SortieModeleCde),ceil(NN/1000))
+title('erreur de simulation')
+
+% moyenne des Erreurs (relative)
+mean(ErreurPredictionARX/...
+    max(abs(ErreurPredictionARX)))
+mean(MaSortie-SortieModeleCde)/...
+    max(abs(MaSortie-SortieModeleCde))
+
+%% Filtrage des données E/S par 
+% un filtre passe-bas du 2nd ordre
+xxi = 0.71;
+ffc = 40; % Hz
+aalp = (2/(Te*2*pi*ffc))^2;
+bbet = 4*xxi/(Te*2*pi*ffc);
+hh0 = (aalp-bbet+1)/(aalp+bbet+1);
+hh1 = 2*(1-aalp)/(aalp+bbet+1);
+FPB1 = inv(aalp+bbet+1)*(z^2+2*z+1)/...
+    (z^2+hh1*z+hh0)
+figure(5);clf;bode(FPB1,'b');grid on
+
+MonEntree_f = (lsim(FPB1,MonEntree))';
+MaSortie_f = (lsim(FPB1,MaSortie))';
+
+figure(6);clf;
+plot(ttemps,MonEntree,'b-');
+hold on
+plot(ttemps,MonEntree_f,'c-'); hold off
+
+figure(7);clf;
+plot(ttemps,MaSortie,'r-');
+hold on
+plot(ttemps,MaSortie_f,'k-'); hold off
+
+Somme1_f = zeros(Na+Nb,Na+Nb);
+Somme2_f = zeros(Na+Nb,1);
+
+Nzpad = max([Na,Nb+dd]);
+NN = length(MaSortie_f);
+for kk = Nzpad+1:NN
+    Phi = [-MaSortie_f(kk-1:-1:kk-Na)';...
+        MonEntree_f(kk-dd-1:-1:kk-dd-Nb)'];
+    Somme1_f = Somme1_f + Phi*Phi';
+    Somme2_f = Somme2_f + Phi*MaSortie_f(kk);
+end
+
+ThetaChapeau_f = Somme1_f\Somme2_f;
+CoefA_f = ThetaChapeau_f(1:Na);
+CoefB_f = ThetaChapeau_f(Na+1:Na+Nb);
+
+Num_f = [0,CoefB_f'];
+Den_f = [1,CoefA_f'];
+
+z=tf('z',Te);
+Sys_d_f = tf(Num_f,Den_f,Te);Sys_d_f.InputDelay=dd;
+
+ttemps_d = 0:Te:(NN-1)*Te;
+figure(10);
+plot(ttemps,MonEntree,'b');
+hold on
+plot(ttemps,MaSortie,'r');
+xlabel('temps (sec)')
+ylabel('Signal Num')
+lsim(Sys_d_f,MonEntree,ttemps_d);
+hold off
+
+Phi = zeros(Na+Nb,1);
+SortiePrediteARX_f = zeros(1,NN);
+ErreurPredictionARX_f = zeros(1,NN);
+for kk = Nzpad+1:NN
+    Phi = [-MaSortie(kk-1:-1:kk-Na)';...
+        MonEntree(kk-dd-1:-1:kk-dd-Nb)'];
+    SortiePrediteARX_f(kk) = Phi'*ThetaChapeau_f;
+    ErreurPredictionARX_f(kk) = MaSortie(kk)-...
+        SortiePrediteARX_f(kk);
+end
+SortieModeleCde_f = (lsim(Sys_d_f,MonEntree,ttemps_d))';
+MaCol1 = [010,150,220]./255; % Couleur vert foncé
+figure(12);clf
+hold on
+pl0 = plot(ttemps_d,MaSortie,'r-');
+pl1 = plot(ttemps_d,SortieModeleCde_f,'g-',...
+    'LineWidth',0.5);
+pl2 = plot(ttemps_d,SortiePrediteARX_f,'-','Color',...
+    MaCol1,'LineWidth',1);
+
+% Tracé de l'histogramme de l'erreur de prédiction
+figure(13);clf
+hist(ErreurPredictionARX_f,ceil(NN/1000));
+title('erreur de prédiction')
+% Tracé de l'histogramme de l'erreur de simulation
+figure(14);clf
+hist((MaSortie-SortieModeleCde_f),ceil(NN/1000));
+title('erreur de simulation')
+
+% moyenne des Erreurs (relative)
+mean(ErreurPredictionARX_f/...
+    max(abs(ErreurPredictionARX_f)));
+mean(MaSortie-SortieModeleCde_f)/...
+    max(abs(MaSortie-SortieModeleCde_f));
+
+
+
+%% Calcul du correcteur RST
+%% en bf : on impose un comportement du 1er ordre
+%% Choix du pole en bf
+p1c = 4*-110;
+p1d = exp(Te*p1c);
+
+%% Pôle du polynome auxiliaire
+p0c = 4*p1c;
+p0d = exp(Te*p0c);
+
+p1c_id
+
+DD = exp(Te*-110);
+K_Omega = 1.75E-3/(2*pi/60);
+Ke = 1/(585*2*pi/60);
+Kv = K_Omega/Ke;
+
+% poly. S(z) = s1*z+s0
+s1 = (1+DD-p0d-p1d)/(Kv*(1-DD));
+s0 = (p0d*p1d-DD)/(Kv*(1-DD));
+
+% Poly. T(z) = t1*z+t0
+t1 = (1-p1d)/(Kv*(1-DD));
+t0 = -(1-p1d)*p0d/(Kv*(1-DD));
+
+% Verification du placement de poles
+% modele du systeme BO pour voir les poles et la stabilité
+
+
+
+G_omega = Kv*(1-DD)/(z-DD);
+% fcion de transfert en BF
+sysbf = Kv*(1-DD)*(t1*z+t0)/((z-DD)*(z-1)+Kv*(1-DD)*(s1*z+s0));
+
+
+

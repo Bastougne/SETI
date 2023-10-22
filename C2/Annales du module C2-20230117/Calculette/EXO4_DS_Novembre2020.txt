@@ -1,0 +1,24 @@
+Q1b:
+Y(Z) = (BT/(AR+BS))*E(Z) + (BR/(AR+BS))*W(Z)
+
+Q2a:
+Am=(z-pd1)(z-pd2)
+pd1 = e^(-Te)
+pd2 = e^(-2*Te)
+Te = 0.1
+Am = z²-(e^(-0.1)+e^(-0.2))*z+e^(-0.3)
+Am = z²+c1z+c0
+
+Q2b:
+q-mu > ou égale n-m = 1
+B(Z) = Z+2, zéro instable, pas de compensation envisageable
+
+Q2c:
+BT = Bd
+AR+BS = Am
+Bd = B*Bd,vague,
+où mu = deg Balpha < ou égale à q-1 = 1
+puisque deg B = 1
+==> deg Balpha,vague, = 0
+Balpha,vague,(z) = K
+

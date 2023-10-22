@@ -1,0 +1,235 @@
+-- ******** Model variables ***************************************************
+
+group "Model Root"
+	group "Tension génétachy\n" -- block-group
+	{
+	 block: "Outport"
+	}
+		p_3_Tp_real_T_0[0]
+		{
+		 type:    flt(64,IEEE)*
+		 alias:   "In1"
+		 flags:   READONLY
+		}
+
+
+
+	endgroup -- block-group "Tension génétachy\n"
+
+	group "Pulse\nGenerator" -- block-group
+	{
+	 block: "DiscretePulseGenerator"
+	}
+		p_0_Tp_real_T_0[0]
+		{
+		 type:    flt(64,IEEE)*
+		 alias:   "Out1"
+		 flags:   OUTPUT|READONLY
+		}
+		p_1_Tp_real_T_0[1]
+		{
+		 type:    flt(64,IEEE)*
+		 alias:   "Period"
+		 flags:   PARAM
+		}
+		p_1_Tp_real_T_0[2]
+		{
+		 type:    flt(64,IEEE)*
+		 alias:   "PulseWidth"
+		 flags:   PARAM
+		}
+		p_1_Tp_real_T_0[3]
+		{
+		 type:    flt(64,IEEE)*
+		 alias:   "PhaseDelay"
+		 flags:   PARAM
+		}
+		trcref0_monAmplitude
+		{
+		 refgroup: "/Tunable Parameters"
+		 refvar:   "monAmplitude"
+		 alias:    "monAmplitude"
+		}
+		trcref0_Amplitude
+		{
+		 refgroup: "/Tunable Parameters"
+		 refvar:   "monAmplitude"
+		 alias:    "Amplitude"
+		 flags:    DEPRECATED|HIDDEN
+		}
+
+
+	endgroup -- block-group "Pulse\nGenerator"
+
+	group "Gain1" -- block-group
+	{
+	 block: "Gain"
+	}
+		p_0_Tp_real_T_0[2]
+		{
+		 type:    flt(64,IEEE)*
+		 alias:   "Out1"
+		 flags:   OUTPUT|READONLY
+		}
+		p_1_Tp_real_T_0[9]
+		{
+		 type:    flt(64,IEEE)*
+		 alias:   "Gain"
+		 flags:   PARAM
+		}
+
+
+	endgroup -- block-group "Gain1"
+
+	group "Gain2" -- block-group
+	{
+	 block: "Gain"
+	}
+		p_0_Tp_real_T_0[5]
+		{
+		 type:    flt(64,IEEE)*
+		 alias:   "Out1"
+		 flags:   OUTPUT|READONLY
+		}
+		p_1_Tp_real_T_0[15]
+		{
+		 type:    flt(64,IEEE)*
+		 alias:   "Gain"
+		 flags:   PARAM
+		}
+
+
+	endgroup -- block-group "Gain2"
+
+	group "Saturation" -- block-group
+	{
+	 block: "Saturate"
+	}
+		p_0_Tp_real_T_0[6]
+		{
+		 type:    flt(64,IEEE)*
+		 alias:   "Out1"
+		 flags:   OUTPUT|READONLY
+		}
+		p_1_Tp_real_T_0[16]
+		{
+		 type:    flt(64,IEEE)*
+		 alias:   "UpperLimit"
+		 flags:   PARAM
+		}
+		p_1_Tp_real_T_0[17]
+		{
+		 type:    flt(64,IEEE)*
+		 alias:   "LowerLimit"
+		 flags:   PARAM
+		}
+
+
+	endgroup -- block-group "Saturation"
+
+	group "Subtract" -- block-group
+	{
+	 block: "Sum"
+	}
+		p_0_Tp_real_T_0[4]
+		{
+		 type:    flt(64,IEEE)*
+		 alias:   "Out1"
+		 flags:   OUTPUT|READONLY
+		}
+
+
+	endgroup -- block-group "Subtract"
+
+	group "Discrete\nTransfer Fcn" -- block-group
+	{
+	 block: "DiscreteTransferFcn"
+	}
+		p_0_Tp_real_T_0[1]
+		{
+		 type:    flt(64,IEEE)*
+		 alias:   "Out1"
+		 flags:   OUTPUT|READONLY
+		}
+		p_1_Tp_real_T_0[4]
+		{
+		 type:    Tp_ArrayDT0_2*
+		 alias:   "Numerator"
+		 flags:   PARAM
+		}
+		p_1_Tp_real_T_0[6]
+		{
+		 type:    Tp_ArrayDT0_2*
+		 alias:   "Denominator"
+		 flags:   PARAM
+		}
+		p_1_Tp_real_T_0[8]
+		{
+		 type:    flt(64,IEEE)*
+		 alias:   "InitialStates"
+		 flags:   PARAM
+		}
+
+
+	endgroup -- block-group "Discrete\nTransfer Fcn"
+
+	group "Discrete\nTransfer Fcn1" -- block-group
+	{
+	 block: "DiscreteTransferFcn"
+	}
+		p_0_Tp_real_T_0[3]
+		{
+		 type:    flt(64,IEEE)*
+		 alias:   "Out1"
+		 flags:   OUTPUT|READONLY
+		}
+		p_1_Tp_real_T_0[10]
+		{
+		 type:    Tp_ArrayDT0_2*
+		 alias:   "Numerator"
+		 flags:   PARAM
+		}
+		p_1_Tp_real_T_0[12]
+		{
+		 type:    Tp_ArrayDT0_2*
+		 alias:   "Denominator"
+		 flags:   PARAM
+		}
+		p_1_Tp_real_T_0[14]
+		{
+		 type:    flt(64,IEEE)*
+		 alias:   "InitialStates"
+		 flags:   PARAM
+		}
+
+
+	endgroup -- block-group "Discrete\nTransfer Fcn1"
+
+  
+  
+	group "DS1104ADC_C5" -- subsystem-group
+
+		p_3_Tp_real_T_0[0]
+		{
+		 type:    flt(64,IEEE)*
+		 alias:   "ADC"
+		 flags:   OUTPUT|READONLY
+		}
+
+	endgroup -- subsystem-group "DS1104ADC_C5"
+  
+  
+	group "DS1104DAC_C1" -- subsystem-group
+
+
+	endgroup -- subsystem-group "DS1104DAC_C1"
+  
+  
+	group "RTI Data" -- subsystem-group
+
+
+	endgroup -- subsystem-group "RTI Data"
+
+
+
+endgroup -- "Model Root"

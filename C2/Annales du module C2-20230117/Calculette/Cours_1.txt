@@ -1,0 +1,36 @@
+stabilité EBSB : 
+Le système discret G, au repos, est stable au sens EBSB ssi tous les poles de sa fonction de transfert sont strictement à lintérieur du cercle unité dans le plan complexe Z
+
+Expression variable Z en fonction de la variable W : 
+Z = (1+w)/(1-w)
+W = (Z-1)/(Z+1)
+
+Relation liant une variable p du plan complexe en temps continu et son équivalent z dans le plan complexe en temps discret :
+Z = e^T*p avec T : intervalle de temps entre deux échantillons dans la séquence discrète
+
+Euler Avant : 
+Z = 1 + p*T
+p = (Z-1)/T 
+
+Euler Arrière : 
+Z = 1/(1-p*T)
+p = (1/T)*((1/Z)-1)
+
+Tustin : 
+p = (2/T)*(1-z^-1)/(1+z^-1) = (2/T)*(Z-1)/(Z+1) 
+
+Tustin Adaptée : 
+p = (2/T)*((1-alpha)*(Z-1))/(Z+1-alpha*(Z-1))
+Cela compense les effets de repliement et la distorsion de phase dans les systèmes discrets à réponse impulsionnelle finie
+
+Théorème de la valeur initiale : 
+u0 = lim uk quand k tend vers 0 = lim U(z) quand z tend vers l'infini
+
+Théorème de la valeur finale : 
+Si les pôles de (z-1)U(Z) sont de module strictement inférieur à 1, alors uk converge et
+u infini = lim uk quand k tend vers infini = lim (z-1)U(z) quand z tend vers 1 
+
+Propriété de l'opérateur retard q^-1 : 
+linéaire / idempotence / commutatif avec l'opérateur d'avance q / inversible
+
+

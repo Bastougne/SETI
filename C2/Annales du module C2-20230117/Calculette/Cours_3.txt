@@ -1,0 +1,28 @@
+Algorithme détaillée permettant estimation récursive de θ chapeau : 
+Algorithme MCR : Moindre Carrées Récursifs avec : 
+θ(t+1) = θ(t)+F(t)*phi(t)*(epsilon(t+1|t))/(1+phi(t)transposée*F(t)*phi(t))
+epsilon(t+1|t) = y(t+1) - θ(t)transposée*phi(t)
+F(t) = F(t-1)-(F(t-1)*phi(t-1)*phi(t-1)transposée*F(t-1))/(1+phi(t-1)transposée*F(t-1)*phi(t-1))
+
+Définition de la transformée en Z pour un signal xn : 
+X(Z) = somme n=0 allant jusqua infini de Xn*Z^-n
+
+BOZ : Bloc Ordre Zéro 
+B0(p) = 1/(1-e^(-Te*p))
+B0(p) = (1-e^(-Te*p))/p
+
+
+schéma principe identification d'un modèle mathématique:
+A gauche : u(k) ==> système réel
+en haut : w(k) ==> rentre dans système réel
+sortie de système réel : y(k)
+bas de u(k) : Modèle mathématique M(θ)
+rentre dans modèle mathématique : e(k)
+sort de modèle mathématique : y,vague,(k,θ)
+y(k) (en haut, +) et y,vague,(k,θ), (en bas, -) renntre dans noeud 
+sortie du noeuf : epsilon(k,θ) ==> Algo identification 
+sortie Algo identification : θ chapeau = identification hors-ligne
+sortie Algo identification : Delta θ(k+1) = identification en ligne (temps-réel)
+Flèche 2eme sortie à modèle mathématique : Loi d'adaptation paramétrique θ(k+1) = θ(k)+delta θ(k+1)
+
+

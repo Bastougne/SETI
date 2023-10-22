@@ -1,0 +1,46 @@
+Q1:
+transformée
+A(P) = H(P)/P
+avec t = K*Te
+et D = e^-Te*a
+
+Q2a:
+B,vague,0(p) = e^((-Te*p)/2)
+
+Q2b:
+PI(p) = KP(1+(1/Ti*p))
+
+Q2c:
+Ordre : PI(p) ==> B,vague,0(p) ==> H(p), boucle unitaire
+
+Q2d:
+epsilon(p) = 1/(1+PI(p)*B,vague,0(p)*H(p))
+E(p) = truc à développer * E(p)
+Lim E(p) quand p tend vers 0 = 0
+
+Q2e:
+C(Z) = PI(p) avec p = (z-1)/Te
+C(Z) = Kp*(z-alpha)/(z-1)
+
+Q2f:
+Euler avant ==> p = (z-1)/Te
+
+Q2g:
+Equation caractéristique : 1+C(Z)G(Z) = 0
+à développer + Jury
+
+Q3a:
+Epsilon,vague,(w) = G(Z) avec (Z = 1+w/1-w)
+
+Q3b:
+Cahier des charges inchangé
+
+Q3c:
+PI(w) = Kp,vague,*(1+1/(Ti,vague,*w))
+
+Q3d:
+C,vague,(z) = PI(w) avec w = z-1/z+1
+C,vague,(z) = Kp,chapeau, * (z-alpha,chapeau,)/(z-1)
+
+Q3e:
+pas d'approximation du modèle, juste changement de variable bijectif.

@@ -1,0 +1,44 @@
+EX3 DS MARS 2020
+Q1:
+Faire PI(Z)
+Faire G(Z)
+Equation caractéristique
+1+G(Z)*PI(Z) = 0
+Remplacer Z par W
+avec Z = 1+w/1-w
+Puis Routh Hurwitz
+
+Q2:
+Faire G(P)/P
+Calculée la transformée en Z
+Poser d = e^-at
+
+Q3:
+Pole cercle unitaire ...
+
+Q4:
+I+P(Z)*H(Z) = 0
+Jury
+
+
+EX3 DS 2018
+Q1:
+Faire transformée en Z de G(p)
+Equation caractéristique
+1+G(Z) = 0
+Jury
+
+Q2:
+Faire transformée en Z de G(p)/p
+multiplier par (z-1)/z
+développer la transformée en Z
+
+Q3:
+Un = numérateur
+Yn = dénominateur
+Exemple : 
+Z-1 au numérateur 
+Un+1 - Un
+z²-3z+2 au dénominateur
+Yn+2 - 3Yn+1 + 2Yn
+Yn+2 - 3Yn+1 + 2Yn = Un+1 - Un

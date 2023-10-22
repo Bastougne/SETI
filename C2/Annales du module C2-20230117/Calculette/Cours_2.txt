@@ -1,0 +1,47 @@
+Expression du prédicteur d'avance à un coup : 
+ychap(k|k-1,θ) = Fg(q^-1)u(k) + Fh(q^-1)y(k)
+Fg(q^-1) = H(q^-1)^-1*G(q^-1) 
+Fh(q^-1) = (1-H(q^-1)^-1)
+... Suite à développer soi-même
+
+hypothèses à vérifier pour permettre prédicteur :
+G(q^-1,théta): 
+- stable EBSB (modules poles < 1)
+- strictement propre (pas de terme constant au numérateur, b0 = 0)
+H(q^-1,théta):
+- stable EBSB + H(q^1,théta)^-1 est stable EBSB (pôles et zéros H(q^-1,théta) module < 1)
+- est propre avec numérateur de dénominateur monique (terme constant = 1)
+
+ARX : Auto-regressive with eXogenous input
+Schéma : 
+à gauche ==> u(k) : q^-d * B(q^-1)/A(q^-1)
+en haut ==> e(k) : 1/A(q^-1)
+a droite ==> y(k) = -a1*y(k-1)-...-ana*y(k-na) : partie auto-régressive
++ b1*u(k-d-1)+...+bnb*u(k-d-nb) : partie eXogène
++ e(k) : influence instantanée du bruit
+
+ARMAX : Auto-regressive with Moving Average and eXogenous input
+u(k) : q^-d * B(q^-1)/A(q^-1)
+e(k) : C(q^-1)/A(q^-1)
+y(k) = -a1*y(k-1)-...-ana*y(k-na) : partie auto-régressive
++ b1*u(k-d-1)+...+bnb*u(k-d-nb) : partie eXogène
++ e(k)+c1*e(k-1)+...+cnc*e(k-n) : influence instantanée du bruit
+
+OE : Output Error
+u(k) : q^-d * B(q^-1)/A(q^-1)
+e(k) : e(k)
+y(k) = -a1*y(k-1)-...-ana*y(k-na) : partie auto-régressive
++ b1*u(k-d-1)+...+bnb*u(k-d-nb) : partie eXogène
++ e(k)+a1*e(k-1)+...+ana*e(k-na) : influence instantanée du bruit
+
+expression détaille vecteur théta chapeau, ARX, moindre carré + identification : 
+Le problème d'identification est un problème d'optimisation
+θchap = argmin Jn(θ), 
+théta chapeau est le vecteur de paramètres qui minimise globamenet le critère Jn(θ)
+J,vague,n(θ) = (1/N)*Jn(o)=(1/N)*somme k=1 jusqua N, epsilon(k|k-1,θ)²
+
+Estimation sans biais : 
+θ chapeau doit être le - sensible au bruit.
+θ chapeau doit correspondre à la vraie valeur des paramètres pour une structure de modèle bruité donnée = Estimateur sans biais ou non biaisée
+
+

@@ -1,0 +1,137 @@
+-- ******** Model variables ***************************************************
+
+group "Model Root"
+	group "Tension génétachy\n" -- block-group
+	{
+	 block: "Outport"
+	}
+		p_3_Tp_real_T_0[0]
+		{
+		 type:    flt(64,IEEE)*
+		 alias:   "In1"
+		 flags:   READONLY
+		}
+
+
+
+	endgroup -- block-group "Tension génétachy\n"
+
+	group "Pulse\nGenerator" -- block-group
+	{
+	 block: "DiscretePulseGenerator"
+	}
+		p_0_Tp_real_T_0[0]
+		{
+		 type:    flt(64,IEEE)*
+		 alias:   "Out1"
+		 flags:   OUTPUT|READONLY
+		}
+		p_1_Tp_real_T_0[1]
+		{
+		 type:    flt(64,IEEE)*
+		 alias:   "Period"
+		 flags:   PARAM
+		}
+		p_1_Tp_real_T_0[2]
+		{
+		 type:    flt(64,IEEE)*
+		 alias:   "PulseWidth"
+		 flags:   PARAM
+		}
+		p_1_Tp_real_T_0[3]
+		{
+		 type:    flt(64,IEEE)*
+		 alias:   "PhaseDelay"
+		 flags:   PARAM
+		}
+		trcref0_monAmplitude
+		{
+		 refgroup: "/Tunable Parameters"
+		 refvar:   "monAmplitude"
+		 alias:    "monAmplitude"
+		}
+		trcref0_Amplitude
+		{
+		 refgroup: "/Tunable Parameters"
+		 refvar:   "monAmplitude"
+		 alias:    "Amplitude"
+		 flags:    DEPRECATED|HIDDEN
+		}
+
+
+	endgroup -- block-group "Pulse\nGenerator"
+
+	group "Gain" -- block-group
+	{
+	 block: "Gain"
+	}
+		p_0_Tp_real_T_0[1]
+		{
+		 type:    flt(64,IEEE)*
+		 alias:   "Out1"
+		 flags:   OUTPUT|READONLY
+		}
+		p_1_Tp_real_T_0[4]
+		{
+		 type:    flt(64,IEEE)*
+		 alias:   "Gain"
+		 flags:   PARAM
+		}
+
+
+	endgroup -- block-group "Gain"
+
+	group "Saturation" -- block-group
+	{
+	 block: "Saturate"
+	}
+		p_0_Tp_real_T_0[2]
+		{
+		 type:    flt(64,IEEE)*
+		 alias:   "Out1"
+		 flags:   OUTPUT|READONLY
+		}
+		p_1_Tp_real_T_0[5]
+		{
+		 type:    flt(64,IEEE)*
+		 alias:   "UpperLimit"
+		 flags:   PARAM
+		}
+		p_1_Tp_real_T_0[6]
+		{
+		 type:    flt(64,IEEE)*
+		 alias:   "LowerLimit"
+		 flags:   PARAM
+		}
+
+
+	endgroup -- block-group "Saturation"
+
+  
+  
+	group "DS1104ADC_C5" -- subsystem-group
+
+		p_3_Tp_real_T_0[0]
+		{
+		 type:    flt(64,IEEE)*
+		 alias:   "ADC"
+		 flags:   OUTPUT|READONLY
+		}
+
+	endgroup -- subsystem-group "DS1104ADC_C5"
+  
+  
+	group "DS1104DAC_C1" -- subsystem-group
+
+
+	endgroup -- subsystem-group "DS1104DAC_C1"
+  
+  
+	group "RTI Data" -- subsystem-group
+
+
+	endgroup -- subsystem-group "RTI Data"
+
+
+
+endgroup -- "Model Root"

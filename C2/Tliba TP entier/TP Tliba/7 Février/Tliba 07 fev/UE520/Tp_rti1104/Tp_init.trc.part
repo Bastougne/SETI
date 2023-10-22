@@ -1,0 +1,29 @@
+
+
+-- Type definitions for structures
+
+struct Tp_struct_isB4Cw3Ovpp8VfzP6RUqbD
+{
+  array-incr: -1
+}
+    structField0 
+    {
+      alias:   "OutputPortsWidth"
+      type:    int(32)
+      offs:    -1
+    }
+endstruct
+
+struct Tp_struct_dZjXwTiylTPloSUBFpnHJB
+{
+  array-incr: -1
+}
+    structField0 
+    {
+      alias:   "InputPortsWidth"
+      type:    int(32)
+      offs:    -1
+    }
+endstruct
+
+

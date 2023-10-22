@@ -1,0 +1,13 @@
+Q1: 
+G(Z) = (z-1)/(z²-3z+2) = (z-1)/(z-1)*(z-2) = 1/z-2
+
+Q2:
+p1 = 1, p2 = 2, |pi|> ou égale à 1, instable EBSB
+
+Q3a :
+C(Z) = ((Kp+Ki)*z-Kp)/z-1
+
+Q3b : 
+Equation caractéristique : 
+1 + G(Z)*C(Z) = 0
+... développe avec G(Z) - C(Z) puis Jury
