@@ -1,0 +1,51 @@
+<html>
+<body>
+<pre>
+<h1>µVision2 Build Log</h1>
+<h2>Project:</h2>
+C:\Users\tabouja\Desktop\TP CAN\cannet_modele2\can_proj.uv2
+Project File Date:  10/27/2022
+
+<h2>Output:</h2>
+Build target 'Target 1'
+compiling FonctionsBases2.c...
+candefs.h(10): warning C329: single-line comment contains line-continuation
+FonctionsBases2.h(10): warning C329: single-line comment contains line-continuation
+FONCTIONSBASES2.C(360): error C141: syntax error near '{'
+FONCTIONSBASES2.C(360): error C141: syntax error near ')'
+FONCTIONSBASES2.C(422): error C141: syntax error near ''
+Target not created
+Build target 'Target 1'
+compiling FonctionsBases2.c...
+candefs.h(10): warning C329: single-line comment contains line-continuation
+FonctionsBases2.h(10): warning C329: single-line comment contains line-continuation
+FONCTIONSBASES2.C(360): error C141: syntax error near '{'
+FONCTIONSBASES2.C(360): error C141: syntax error near '}'
+Target not created
+Build target 'Target 1'
+compiling FonctionsBases2.c...
+candefs.h(10): warning C329: single-line comment contains line-continuation
+FonctionsBases2.h(10): warning C329: single-line comment contains line-continuation
+FONCTIONSBASES2.C(298): warning C280: 'dataChange': unreferenced local variable
+FONCTIONSBASES2.C(299): warning C280: 'data1': unreferenced local variable
+FONCTIONSBASES2.C(300): warning C280: 'data2': unreferenced local variable
+FONCTIONSBASES2.C(301): warning C280: 'dlc': unreferenced local variable
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?CAN_BUF_FULL?FONCTIONSBASES2
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?DETECT_TOUCHE?LIBTP2
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_DECODE_TOUCHE?LIBTP2
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_LCD_GOTO?LIBTP2
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_PRINT_LCD?LIBTP2
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?INIT_LCD?LIBTP2
+*** ERROR L107: ADDRESS SPACE OVERFLOW
+    SPACE:   DATA    
+    SEGMENT: _DATA_GROUP_
+    LENGTH:  0021H
+Program Size: data=135.4 xdata=7 code=2439
+Target not created

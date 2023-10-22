@@ -1,0 +1,7 @@
+".\startupfyt.LIB",
+".\LIBTP2.OBJ",
+"modele_c.obj" 
+TO "Prog1c" 
+IXREF 
+RAMSIZE(256) 
+CODE( 0X8100-0XF0FE )
