@@ -1,0 +1,12 @@
+../../Image//ferrari.rawSeuillage CPU d'une image couleur 
+CPU execution time 115.218231
+GPU execution time 107.036148 ms (memory management 42.59 %)
+../../Image//ferrari.rawSeuillage CPU d'une image couleur 
+CPU execution time 104.497971
+GPU execution time 102.592445 ms (memory management 59.90 %)
+../../Image//ferrari.rawSeuillage CPU d'une image couleur 
+CPU execution time 112.771507
+GPU execution time 110.150002 ms (memory management 44.22 %)
+../../Image//ferrari.rawSeuillage CPU d'une image couleur 
+CPU execution time 109.707497
+GPU execution time 79.315155 ms (memory management 48.13 %)

@@ -1,0 +1,7 @@
+﻿  lodepng.cpp
+c:\users\ielboua\desktop\sobel_c\lodepng.cpp(730): warning C4267: '=' : conversion de 'size_t' en 'unsigned short', perte possible de données
+c:\users\ielboua\desktop\sobel_c\lodepng.cpp(754): warning C4267: '=' : conversion de 'size_t' en 'unsigned short', perte possible de données
+c:\users\ielboua\desktop\sobel_c\lodepng.cpp(771): warning C4267: '=' : conversion de 'size_t' en 'unsigned short', perte possible de données
+  main.cpp
+  Génération de code en cours...
+  SobelC.vcxproj -> C:\Users\ielboua\Desktop\Sobel_C\SobelC\Debug\SobelC.exe

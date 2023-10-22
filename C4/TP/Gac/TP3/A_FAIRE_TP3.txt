@@ -1,0 +1,5 @@
+A FAIRE : 
+Implémenter Algo de Sobel version Cuda + expliquer (dans le fichier mylib.cu) ==> Déja fait, peux-être 
+le modifier puis demander de l'optimiser 
+
+mylib.cu a été rempli par le prof !! 

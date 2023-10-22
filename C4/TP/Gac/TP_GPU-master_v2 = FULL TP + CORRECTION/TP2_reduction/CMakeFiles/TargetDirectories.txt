@@ -1,0 +1,3 @@
+/home/nano/Desktop/TP_GPU-master_v2/TP2_reduction/CMakeFiles/rebuild_cache.dir
+/home/nano/Desktop/TP_GPU-master_v2/TP2_reduction/CMakeFiles/reduce.dir
+/home/nano/Desktop/TP_GPU-master_v2/TP2_reduction/CMakeFiles/edit_cache.dir

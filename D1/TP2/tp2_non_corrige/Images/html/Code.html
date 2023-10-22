@@ -1,0 +1,578 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      --><title>Code</title><meta name="generator" content="MATLAB 9.8"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2023-02-26"><meta name="DC.source" content="Code.m"><style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img, h1 img, h2 img { margin-bottom:0px; }
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, code { font-size:12px; }
+tt { font-size: 1.2em; }
+pre { margin:0px 0px 20px; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+pre.error { color:red; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+span.typesection { color:#A0522D }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+.footer a { color:#878787; }
+.footer a:hover { color:#878787; text-decoration:underline; }
+.footer a:visited { color:#878787; }
+
+table th { padding:7px 5px; text-align:left; vertical-align:middle; border: 1px solid #d6d4d4; font-weight:bold; }
+table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px solid #d6d4d4; }
+
+
+
+
+
+  </style></head><body><div class="content"><pre class="codeinput">nbIterations = 614;
+compteurIteration = 1;
+hauteur = 288;
+largeur = 384;
+valeurPixel = zeros(hauteur,largeur,nbIterations);
+ecartType = zeros(hauteur,largeur);
+moyenne = zeros(hauteur,largeur,<span class="string">'int32'</span>);
+imageFiltree = zeros(hauteur,largeur);
+imageChargee = zeros(nbIterations, hauteur,largeur);
+
+<span class="comment">% --------------------------------- Q1 ---------------------------------</span>
+<span class="keyword">while</span> (compteurIteration &lt; nbIterations)
+
+    <span class="keyword">if</span>(compteurIteration &lt; 10)
+        I = imread([<span class="string">'image_00'</span> num2str(compteurIteration, <span class="string">'%01d'</span>) <span class="string">'.jpg'</span>]); <span class="comment">% Charger l'image</span>
+    <span class="keyword">end</span>
+
+    <span class="keyword">if</span>(compteurIteration &gt;= 10 &amp;&amp; compteurIteration &lt; 100)
+        I = imread([<span class="string">'image_0'</span> num2str(compteurIteration, <span class="string">'%02d'</span>) <span class="string">'.jpg'</span>]); <span class="comment">% Charger l'image</span>
+    <span class="keyword">end</span>
+
+    <span class="keyword">if</span>(compteurIteration &gt;= 100)
+        I = imread([<span class="string">'image_'</span> num2str(compteurIteration, <span class="string">'%02d'</span>) <span class="string">'.jpg'</span>]); <span class="comment">% Charger l'imagew</span>
+    <span class="keyword">end</span>
+
+    <span class="keyword">if</span> ndims(I) == 3
+        I = rgb2gray(I); <span class="comment">% Convertir en niveaux de gris</span>
+    <span class="keyword">end</span>
+
+    [hauteur, largeur] = size(I);
+
+    <span class="keyword">for</span> colonne = 1:hauteur
+        <span class="keyword">for</span> ligne = 1:largeur
+            moyenne(colonne,ligne) = moyenne(colonne,ligne)+int32(I(colonne,ligne));
+            valeurPixel(colonne,ligne,compteurIteration) = I(colonne,ligne);
+        <span class="keyword">end</span>
+    <span class="keyword">end</span>
+
+    compteurIteration = compteurIteration + 1;
+<span class="keyword">end</span>
+
+<span class="comment">%calcul de la moyenne</span>
+<span class="keyword">for</span> colonne = 1:hauteur
+    <span class="keyword">for</span> ligne = 1:largeur
+        moyenne(colonne,ligne)=moyenne(colonne,ligne)/(nbIterations-1);
+    <span class="keyword">end</span>
+<span class="keyword">end</span>
+
+<span class="comment">% calcul de l'&eacute;cart type</span>
+<span class="keyword">for</span> colonne = 1:hauteur
+     <span class="keyword">for</span> ligne = 1:largeur
+        <span class="keyword">for</span> nbImages = 1:nbIterations
+             ecartType(colonne,ligne) = ecartType(colonne,ligne)+(((valeurPixel(colonne,ligne,nbImages)-moyenne(colonne,ligne))^2)/nbIterations);
+         <span class="keyword">end</span>
+         ecartType(colonne,ligne) = sqrt(ecartType(colonne,ligne));
+     <span class="keyword">end</span>
+     <span class="comment">%colonne</span>
+ <span class="keyword">end</span>
+<span class="comment">%</span>
+<span class="comment">%</span>
+<span class="comment">%</span>
+<span class="comment">% % ----------------- Q1 FILTREE ----------------------------</span>
+compteurIteration = 1;
+<span class="keyword">while</span> (compteurIteration &lt; nbIterations)
+    <span class="keyword">if</span>(compteurIteration &lt; 10)
+        I = imread([<span class="string">'image_00'</span> num2str(compteurIteration, <span class="string">'%01d'</span>) <span class="string">'.jpg'</span>]); <span class="comment">% Charger l'image</span>
+    <span class="keyword">end</span>
+
+    <span class="keyword">if</span>(compteurIteration &gt;= 10 &amp;&amp; compteurIteration &lt; 100)
+        I = imread([<span class="string">'image_0'</span> num2str(compteurIteration, <span class="string">'%02d'</span>) <span class="string">'.jpg'</span>]);
+    <span class="keyword">end</span>
+
+    <span class="keyword">if</span>(compteurIteration &gt;= 100)
+        I = imread([<span class="string">'image_'</span> num2str(compteurIteration, <span class="string">'%02d'</span>) <span class="string">'.jpg'</span>]);
+    <span class="keyword">end</span>
+
+    ycbcrImage = rgb2ycbcr(I);
+    luminance = ycbcrImage(:,:,1);
+    Cb = ycbcrImage(:,:,2);
+    Cr = ycbcrImage(:,:,3);
+    hsvImage = rgb2hsv(I);
+    H = hsvImage(:,:,1);
+    S = hsvImage(:,:,2);
+    V = hsvImage(:,:,3);
+
+<span class="comment">%     figure;</span>
+<span class="comment">%     imshow(ycbcrImage);</span>
+<span class="comment">%     figure;</span>
+<span class="comment">%     imshow(luminance);</span>
+<span class="comment">%     figure;</span>
+<span class="comment">%     imshow(Cb);</span>
+<span class="comment">%     figure;</span>
+<span class="comment">%     imshow(Cr);</span>
+
+    <span class="keyword">if</span> ndims(I) == 3
+        I = rgb2gray(I); <span class="comment">% Convertir en niveaux de gris</span>
+    <span class="keyword">end</span>
+
+    <span class="keyword">for</span> colonne = 1:hauteur
+        <span class="keyword">for</span> ligne = 1:largeur
+            <span class="keyword">if</span>(ecartType(colonne,ligne)&gt;20)
+                imageFiltree(colonne,ligne) = 255;
+                <span class="keyword">if</span>(abs(uint8(moyenne(colonne,ligne))-I(colonne,ligne))&gt;20)
+                    imageFiltree(colonne,ligne) = 0;
+                    <span class="keyword">if</span>(H(colonne,ligne)&gt;0.4&amp;&amp;H(colonne,ligne)&lt;0.90&amp;&amp;S(colonne,ligne)&lt;0.5&amp;&amp;S(colonne,ligne)&gt;0.1&amp;&amp;V(colonne,ligne)&lt;0.4&amp;&amp;V(colonne,ligne)&gt;0.05)
+                        imageFiltree(colonne,ligne) = 255;
+                    <span class="keyword">end</span>
+                    <span class="keyword">if</span>(luminance(colonne,ligne)&lt;70&amp;&amp;luminance(colonne,ligne)&gt;23&amp;&amp;Cb(colonne,ligne)&gt;122&amp;&amp;Cb(colonne,ligne)&lt;142&amp;&amp;Cr(colonne,ligne)&gt;122&amp;&amp;Cr(colonne,ligne)&lt;133)
+                        imageFiltree(colonne,ligne) = 255;
+                    <span class="keyword">end</span>
+                <span class="keyword">end</span>
+            <span class="keyword">else</span>
+                imageFiltree(colonne,ligne) = 0;
+            <span class="keyword">end</span>
+        <span class="keyword">end</span>
+    <span class="keyword">end</span>
+
+<span class="comment">%     if(compteurIteration == 1)</span>
+<span class="comment">%         figure;</span>
+<span class="comment">%         imshow(uint8(imageFiltree));</span>
+<span class="comment">%     end</span>
+<span class="comment">%</span>
+<span class="comment">%     if(compteurIteration == 101)</span>
+<span class="comment">%         figure;</span>
+<span class="comment">%         imshow(uint8(imageFiltree));</span>
+<span class="comment">%     end</span>
+<span class="comment">%</span>
+<span class="comment">%     if(compteurIteration == 201)</span>
+<span class="comment">%         figure;</span>
+<span class="comment">%         imshow(uint8(imageFiltree));</span>
+<span class="comment">%     end</span>
+<span class="comment">%</span>
+<span class="comment">%     if(compteurIteration == 301)</span>
+<span class="comment">%         figure;</span>
+<span class="comment">%         imshow(uint8(imageFiltree));</span>
+<span class="comment">%     end</span>
+<span class="comment">%</span>
+<span class="comment">%     if(compteurIteration == 401)</span>
+<span class="comment">%         figure;</span>
+<span class="comment">%         imshow(uint8(imageFiltree));</span>
+<span class="comment">%     end</span>
+<span class="comment">%</span>
+<span class="comment">%     if(compteurIteration == 501)</span>
+<span class="comment">%         figure;</span>
+<span class="comment">%         imshow(uint8(imageFiltree));</span>
+<span class="comment">%     end</span>
+<span class="comment">%</span>
+<span class="comment">%     if(compteurIteration == 601)</span>
+<span class="comment">%         figure;</span>
+<span class="comment">%         imshow(uint8(imageFiltree));</span>
+<span class="comment">%     end</span>
+
+    <span class="comment">%figure;</span>
+    <span class="comment">%imshow(uint8(imageFiltree));</span>
+    compteurIteration = compteurIteration + 1;
+<span class="keyword">end</span>
+
+
+
+
+<span class="comment">%--------------------------------- Q2 ---------------------------------</span>
+compteurIteration = 1;
+<span class="keyword">for</span> compteurIteration = 1:nbIterations
+    <span class="keyword">if</span>(compteurIteration &lt; 10)
+        I = imread([<span class="string">'image_00'</span> num2str(compteurIteration, <span class="string">'%01d'</span>) <span class="string">'.jpg'</span>]); <span class="comment">% Charger l'image</span>
+    <span class="keyword">end</span>
+
+    <span class="keyword">if</span>(compteurIteration &gt;= 10 &amp;&amp; compteurIteration &lt; 100)
+        I = imread([<span class="string">'image_0'</span> num2str(compteurIteration, <span class="string">'%02d'</span>) <span class="string">'.jpg'</span>]);
+    <span class="keyword">end</span>
+
+    <span class="keyword">if</span>(compteurIteration &gt;= 100)
+        I = imread([<span class="string">'image_'</span> num2str(compteurIteration, <span class="string">'%02d'</span>) <span class="string">'.jpg'</span>]);
+    <span class="keyword">end</span>
+
+    <span class="keyword">if</span> ndims(I) == 3
+        I = rgb2gray(I); <span class="comment">% Convertir en niveaux de gris</span>
+    <span class="keyword">end</span>
+
+    <span class="keyword">for</span> colonne = 1:hauteur
+        <span class="keyword">for</span> ligne = 1:largeur
+            imageChargee(compteurIteration,colonne,ligne) = I(colonne,ligne);
+        <span class="keyword">end</span>
+    <span class="keyword">end</span>
+<span class="keyword">end</span>
+
+tableauGaussSomme = zeros(hauteur,largeur);
+
+<span class="keyword">for</span> colonne = 1:hauteur
+    <span class="keyword">for</span> ligne = 1:largeur
+        tableauPixel = zeros(1,nbIterations);
+        tableauGauss = zeros(1,256);
+
+        <span class="keyword">for</span> compteurIteration = 1:nbIterations
+            tableauPixel(compteurIteration) = imageChargee(compteurIteration,colonne,ligne);
+        <span class="keyword">end</span>
+
+<span class="comment">%         figure;</span>
+<span class="comment">%         plot(tableauPixel);</span>
+<span class="comment">%         ylim([0, 255]);</span>
+<span class="comment">%         xlim([0, nbIterations]);</span>
+<span class="comment">%         xlabel('Nombre it&eacute;rations')</span>
+<span class="comment">%         ylabel('Valeur du pixel en niveau de gris')</span>
+
+
+        <span class="keyword">for</span> cptIt = 1:nbIterations
+            tableauGauss(tableauPixel(cptIt)+1) = tableauGauss(tableauPixel(cptIt)+1)+1;
+        <span class="keyword">end</span>
+
+<span class="comment">%         tableauGaussSomme(colonne,ligne) = sum(tableauGauss);</span>
+<span class="comment">%         figure;</span>
+<span class="comment">%         plot(tableauGauss);</span>
+<span class="comment">%         xlim([0, 256]);</span>
+<span class="comment">%         xlabel('Niveau de gris')</span>
+<span class="comment">%         ylabel('Occurence')</span>
+
+        maxTableau = max(tableauGauss);
+        seuil = maxTableau*0.1;
+        nbElementMoyenne = 0;
+        moy = 0;
+
+        <span class="keyword">for</span> compteurSeuil = 1:256
+            <span class="keyword">if</span>(tableauGauss(compteurSeuil)&gt;seuil)
+                moy = moy + compteurSeuil*tableauGauss(compteurSeuil);
+                nbElementMoyenne = nbElementMoyenne + tableauGauss(compteurSeuil);
+            <span class="keyword">end</span>
+        <span class="keyword">end</span>
+
+        <span class="comment">% Calcul 2eme moyenne</span>
+        moyenne(colonne,ligne) = (moy/nbElementMoyenne)-1;
+        ligne;
+        <span class="keyword">end</span>
+
+<span class="keyword">end</span>
+
+<span class="comment">% Calcul 2eme ecart-type</span>
+<span class="keyword">for</span> colonne = 1:hauteur
+     <span class="keyword">for</span> ligne = 1:largeur
+        <span class="keyword">for</span> nbImages = 1:nbIterations
+             ecartType(colonne,ligne) = ecartType(colonne,ligne)+(((imageChargee(nbImages,colonne,ligne)-moyenne(colonne,ligne))^2)/nbIterations);
+         <span class="keyword">end</span>
+         ecartType(colonne,ligne) = sqrt(ecartType(colonne,ligne));
+     <span class="keyword">end</span>
+<span class="keyword">end</span>
+
+
+    figure;
+    imshow(uint8(moyenne)); <span class="comment">% Affichage de la moyenne en 1 image</span>
+    figure;
+    imshow(uint8(ecartType)); <span class="comment">% Affichage de l'&eacute;cart type en 1 image</span>
+    <span class="comment">%figure;</span>
+    <span class="comment">%imshow(uint8(imageFiltree));</span>
+</pre><img vspace="5" hspace="5" src="Code_01.png" alt=""> <img vspace="5" hspace="5" src="Code_02.png" alt=""> <p class="footer"><br><a href="https://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2020a</a><br></p></div><!--
+##### SOURCE BEGIN #####
+nbIterations = 614;
+compteurIteration = 1;
+hauteur = 288;
+largeur = 384;
+valeurPixel = zeros(hauteur,largeur,nbIterations);
+ecartType = zeros(hauteur,largeur);
+moyenne = zeros(hauteur,largeur,'int32');
+imageFiltree = zeros(hauteur,largeur);
+imageChargee = zeros(nbIterations, hauteur,largeur);
+
+% REPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASH- Q1 REPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASH-
+while (compteurIteration < nbIterations)
+
+    if(compteurIteration < 10)
+        I = imread(['image_00' num2str(compteurIteration, '%01d') '.jpg']); % Charger l'image
+    end
+
+    if(compteurIteration >= 10 && compteurIteration < 100)
+        I = imread(['image_0' num2str(compteurIteration, '%02d') '.jpg']); % Charger l'image
+    end
+
+    if(compteurIteration >= 100)
+        I = imread(['image_' num2str(compteurIteration, '%02d') '.jpg']); % Charger l'imagew
+    end
+
+    if ndims(I) == 3
+        I = rgb2gray(I); % Convertir en niveaux de gris
+    end
+
+    [hauteur, largeur] = size(I);
+
+    for colonne = 1:hauteur
+        for ligne = 1:largeur
+            moyenne(colonne,ligne) = moyenne(colonne,ligne)+int32(I(colonne,ligne)); 
+            valeurPixel(colonne,ligne,compteurIteration) = I(colonne,ligne);
+        end
+    end
+
+    compteurIteration = compteurIteration + 1;
+end
+
+%calcul de la moyenne
+for colonne = 1:hauteur
+    for ligne = 1:largeur
+        moyenne(colonne,ligne)=moyenne(colonne,ligne)/(nbIterations-1);
+    end
+end
+    
+% calcul de l'écart type  
+for colonne = 1:hauteur
+     for ligne = 1:largeur
+        for nbImages = 1:nbIterations
+             ecartType(colonne,ligne) = ecartType(colonne,ligne)+(((valeurPixel(colonne,ligne,nbImages)-moyenne(colonne,ligne))^2)/nbIterations);
+         end      
+         ecartType(colonne,ligne) = sqrt(ecartType(colonne,ligne)); 
+     end
+     %colonne
+ end
+% 
+% 
+% 
+% % REPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASH- Q1 FILTREE REPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASH
+compteurIteration = 1;
+while (compteurIteration < nbIterations)
+    if(compteurIteration < 10)
+        I = imread(['image_00' num2str(compteurIteration, '%01d') '.jpg']); % Charger l'image
+    end
+    
+    if(compteurIteration >= 10 && compteurIteration < 100)
+        I = imread(['image_0' num2str(compteurIteration, '%02d') '.jpg']);
+    end
+    
+    if(compteurIteration >= 100)
+        I = imread(['image_' num2str(compteurIteration, '%02d') '.jpg']);
+    end
+    
+    ycbcrImage = rgb2ycbcr(I);
+    luminance = ycbcrImage(:,:,1);
+    Cb = ycbcrImage(:,:,2);
+    Cr = ycbcrImage(:,:,3);
+    hsvImage = rgb2hsv(I);
+    H = hsvImage(:,:,1);
+    S = hsvImage(:,:,2);
+    V = hsvImage(:,:,3);
+
+%     figure;
+%     imshow(ycbcrImage);  
+%     figure;
+%     imshow(luminance);  
+%     figure;
+%     imshow(Cb);  
+%     figure;
+%     imshow(Cr);  
+    
+    if ndims(I) == 3
+        I = rgb2gray(I); % Convertir en niveaux de gris
+    end
+    
+    for colonne = 1:hauteur
+        for ligne = 1:largeur
+            if(ecartType(colonne,ligne)>20)
+                imageFiltree(colonne,ligne) = 255;
+                if(abs(uint8(moyenne(colonne,ligne))-I(colonne,ligne))>20)
+                    imageFiltree(colonne,ligne) = 0;
+                    if(H(colonne,ligne)>0.4&&H(colonne,ligne)<0.90&&S(colonne,ligne)<0.5&&S(colonne,ligne)>0.1&&V(colonne,ligne)<0.4&&V(colonne,ligne)>0.05)
+                        imageFiltree(colonne,ligne) = 255;
+                    end                 
+                    if(luminance(colonne,ligne)<70&&luminance(colonne,ligne)>23&&Cb(colonne,ligne)>122&&Cb(colonne,ligne)<142&&Cr(colonne,ligne)>122&&Cr(colonne,ligne)<133)
+                        imageFiltree(colonne,ligne) = 255;
+                    end
+                end
+            else
+                imageFiltree(colonne,ligne) = 0;
+            end
+        end  
+    end
+    
+%     if(compteurIteration == 1)
+%         figure;
+%         imshow(uint8(imageFiltree));  
+%     end
+%     
+%     if(compteurIteration == 101)
+%         figure;
+%         imshow(uint8(imageFiltree));  
+%     end
+%     
+%     if(compteurIteration == 201)
+%         figure;
+%         imshow(uint8(imageFiltree));  
+%     end
+%     
+%     if(compteurIteration == 301)
+%         figure;
+%         imshow(uint8(imageFiltree));  
+%     end
+%     
+%     if(compteurIteration == 401)
+%         figure;
+%         imshow(uint8(imageFiltree));  
+%     end
+%     
+%     if(compteurIteration == 501)
+%         figure;
+%         imshow(uint8(imageFiltree));  
+%     end
+%     
+%     if(compteurIteration == 601)
+%         figure;
+%         imshow(uint8(imageFiltree));  
+%     end
+
+    %figure;
+    %imshow(uint8(imageFiltree)); 
+    compteurIteration = compteurIteration + 1;
+end
+
+
+
+
+%REPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASH- Q2 REPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASH-
+compteurIteration = 1;
+for compteurIteration = 1:nbIterations
+    if(compteurIteration < 10)
+        I = imread(['image_00' num2str(compteurIteration, '%01d') '.jpg']); % Charger l'image
+    end
+
+    if(compteurIteration >= 10 && compteurIteration < 100)
+        I = imread(['image_0' num2str(compteurIteration, '%02d') '.jpg']);
+    end
+
+    if(compteurIteration >= 100)
+        I = imread(['image_' num2str(compteurIteration, '%02d') '.jpg']);
+    end
+    
+    if ndims(I) == 3
+        I = rgb2gray(I); % Convertir en niveaux de gris
+    end
+    
+    for colonne = 1:hauteur
+        for ligne = 1:largeur
+            imageChargee(compteurIteration,colonne,ligne) = I(colonne,ligne);
+        end
+    end     
+end
+
+tableauGaussSomme = zeros(hauteur,largeur);
+
+for colonne = 1:hauteur
+    for ligne = 1:largeur 
+        tableauPixel = zeros(1,nbIterations);
+        tableauGauss = zeros(1,256);
+        
+        for compteurIteration = 1:nbIterations
+            tableauPixel(compteurIteration) = imageChargee(compteurIteration,colonne,ligne);
+        end
+        
+%         figure;
+%         plot(tableauPixel);
+%         ylim([0, 255]);
+%         xlim([0, nbIterations]);
+%         xlabel('Nombre itérations')
+%         ylabel('Valeur du pixel en niveau de gris')
+
+        
+        for cptIt = 1:nbIterations
+            tableauGauss(tableauPixel(cptIt)+1) = tableauGauss(tableauPixel(cptIt)+1)+1;
+        end
+        
+%         tableauGaussSomme(colonne,ligne) = sum(tableauGauss);
+%         figure;
+%         plot(tableauGauss);
+%         xlim([0, 256]);
+%         xlabel('Niveau de gris')
+%         ylabel('Occurence')
+
+        maxTableau = max(tableauGauss);
+        seuil = maxTableau*0.1;
+        nbElementMoyenne = 0;
+        moy = 0;
+
+        for compteurSeuil = 1:256
+            if(tableauGauss(compteurSeuil)>seuil)
+                moy = moy + compteurSeuil*tableauGauss(compteurSeuil);
+                nbElementMoyenne = nbElementMoyenne + tableauGauss(compteurSeuil);
+            end 
+        end
+
+        % Calcul 2eme moyenne
+        moyenne(colonne,ligne) = (moy/nbElementMoyenne)-1;   
+        ligne;
+        end
+  
+end
+
+% Calcul 2eme ecart-type
+for colonne = 1:hauteur
+     for ligne = 1:largeur
+        for nbImages = 1:nbIterations
+             ecartType(colonne,ligne) = ecartType(colonne,ligne)+(((imageChargee(nbImages,colonne,ligne)-moyenne(colonne,ligne))^2)/nbIterations);
+         end      
+         ecartType(colonne,ligne) = sqrt(ecartType(colonne,ligne)); 
+     end
+end
+
+ 
+    figure;
+    imshow(uint8(moyenne)); % Affichage de la moyenne en 1 image
+    figure;
+    imshow(uint8(ecartType)); % Affichage de l'écart type en 1 image
+    %figure;
+    %imshow(uint8(imageFiltree));
+    
+##### SOURCE END #####
+--></body></html>

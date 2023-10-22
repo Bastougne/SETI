@@ -1,0 +1,3 @@
+Première partie du sujet = version non optimisée (reduce_kernel)
+
+Deuxième partie du sujet = version optimisée (reduce_kernel optimisé)
