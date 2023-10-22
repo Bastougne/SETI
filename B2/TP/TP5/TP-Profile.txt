@@ -1,0 +1,1 @@
+Il existe une métaclass contrainte, pour étendre les contraintes, ne pas utiliser pas la métaclass class

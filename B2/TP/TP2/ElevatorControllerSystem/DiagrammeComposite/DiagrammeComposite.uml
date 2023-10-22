@@ -1,0 +1,360 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Model xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xmi:id="_UUJ9YJQGEe2wH6qjprlFIw" name="DiagrammeComposite">
+  <ownedComment xmi:type="uml:Comment" xmi:id="_zyDC0JRiEe2PHusCqUKrWA">
+    <body>Lié à la classe :  InternalButtonsDetectionSystem </body>
+  </ownedComment>
+  <ownedComment xmi:type="uml:Comment" xmi:id="_-JafQJRiEe2PHusCqUKrWA">
+    <body>Lié à la classe :  ExternalButtonsDetectionSystem </body>
+  </ownedComment>
+  <ownedComment xmi:type="uml:Comment" xmi:id="_Ar0xoJRjEe2PHusCqUKrWA">
+    <body>Lié à la classe :  FireDetectionSystem </body>
+  </ownedComment>
+  <ownedComment xmi:type="uml:Comment" xmi:id="_-3G2QJRjEe2PHusCqUKrWA">
+    <body>Lié à la classe :  CentralProcessor</body>
+  </ownedComment>
+  <ownedComment xmi:type="uml:Comment" xmi:id="_la0pUJSIEe2nZObSsu7hYg">
+    <body>Lié à la classe :  CentralProcessor</body>
+  </ownedComment>
+  <ownedComment xmi:type="uml:Comment" xmi:id="_J6txAJSNEe2nZObSsu7hYg">
+    <body>Lié à la classe :  DisplayFloorSystem</body>
+  </ownedComment>
+  <ownedComment xmi:type="uml:Comment" xmi:id="_QNRUMJSNEe2nZObSsu7hYg">
+    <body>Lié à la classe :  ChangeModeSystem</body>
+  </ownedComment>
+  <ownedComment xmi:type="uml:Comment" xmi:id="_Ql52oJSNEe2nZObSsu7hYg">
+    <body>Lié à la classe :  OpenDoorSystem</body>
+  </ownedComment>
+  <ownedComment xmi:type="uml:Comment" xmi:id="_Q9P_oJSNEe2nZObSsu7hYg">
+    <body>Lié à la classe :  StopSystem</body>
+  </ownedComment>
+  <ownedComment xmi:type="uml:Comment" xmi:id="_RRZqsJSNEe2nZObSsu7hYg">
+    <body>Lié à la classe :  AlarmSystem</body>
+  </ownedComment>
+  <packageImport xmi:type="uml:PackageImport" xmi:id="_UV0KQJQGEe2wH6qjprlFIw">
+    <importedPackage xmi:type="uml:Model" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#_0"/>
+  </packageImport>
+  <packagedElement xmi:type="uml:Class" xmi:id="_ZYCuAJQGEe2wH6qjprlFIw" name="ElevatorControllerSystem">
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_osYawJQGEe2wH6qjprlFIw" name="externalbuttonsdetectionsystem" type="_cYWn4JQHEe2wH6qjprlFIw"/>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_vxD-cJQGEe2wH6qjprlFIw" name="internalbuttonsdetectionsystem" visibility="protected" type="_Y3LnMJQHEe2wH6qjprlFIw"/>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_1b7PgJQGEe2wH6qjprlFIw" name="firedetectionsystem" type="_PhtFkJQHEe2wH6qjprlFIw"/>
+    <ownedAttribute xmi:type="uml:Port" xmi:id="_HnaIgJQHEe2wH6qjprlFIw" name="Port5" aggregation="composite"/>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_K-lfsJQHEe2wH6qjprlFIw" name="centralprocessor" type="_rzv-4JQHEe2wH6qjprlFIw"/>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_-B7mkJQHEe2wH6qjprlFIw" name="displayfloorsystem" type="_Ai5ugJQIEe2wH6qjprlFIw"/>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_EkbqQJQIEe2wH6qjprlFIw" name="alarmsystem" type="_zG4_4JQIEe2wH6qjprlFIw"/>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_enVLcJQIEe2wH6qjprlFIw" name="stopsystem" type="_0HPCkJQIEe2wH6qjprlFIw"/>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_fxJ6QJQIEe2wH6qjprlFIw" name="opendoorsystem" type="_0029kJQIEe2wH6qjprlFIw"/>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_iXrQkJQIEe2wH6qjprlFIw" name="changemodesystem" type="_2hCykJQIEe2wH6qjprlFIw"/>
+    <ownedAttribute xmi:type="uml:Port" xmi:id="_FbXc0JQJEe2wH6qjprlFIw" name="Port1" type="_ZYCuAJQGEe2wH6qjprlFIw" aggregation="composite"/>
+    <ownedAttribute xmi:type="uml:Port" xmi:id="_th_-gJQJEe2wH6qjprlFIw" name="Port2" type="_ZYCuAJQGEe2wH6qjprlFIw" aggregation="composite"/>
+    <ownedAttribute xmi:type="uml:Port" xmi:id="_vGiTYJQJEe2wH6qjprlFIw" name="Port3" type="_ZYCuAJQGEe2wH6qjprlFIw" aggregation="composite"/>
+    <ownedAttribute xmi:type="uml:Port" xmi:id="_2oCjsJQOEe2wH6qjprlFIw" name="Port8" type="_ZYCuAJQGEe2wH6qjprlFIw" aggregation="composite"/>
+    <ownedAttribute xmi:type="uml:Port" xmi:id="_3FLysJQOEe2wH6qjprlFIw" name="Port7" type="_ZYCuAJQGEe2wH6qjprlFIw" aggregation="composite"/>
+    <ownedAttribute xmi:type="uml:Port" xmi:id="_3mjaYJQOEe2wH6qjprlFIw" name="Port4" type="_ZYCuAJQGEe2wH6qjprlFIw" aggregation="composite"/>
+    <ownedAttribute xmi:type="uml:Port" xmi:id="_4ZodIJQOEe2wH6qjprlFIw" name="Port6" type="_ZYCuAJQGEe2wH6qjprlFIw" aggregation="composite"/>
+    <ownedAttribute xmi:type="uml:Port" xmi:id="_4snDgJQOEe2wH6qjprlFIw" name="Port5" type="_ZYCuAJQGEe2wH6qjprlFIw" aggregation="composite"/>
+    <ownedConnector xmi:type="uml:Connector" xmi:id="_CddH8JQOEe2wH6qjprlFIw" name="Connector3">
+      <end xmi:type="uml:ConnectorEnd" xmi:id="_CddH8ZQOEe2wH6qjprlFIw" role="_vGiTYJQJEe2wH6qjprlFIw"/>
+      <end xmi:type="uml:ConnectorEnd" xmi:id="_CddH8pQOEe2wH6qjprlFIw" partWithPort="_1b7PgJQGEe2wH6qjprlFIw" role="_Lv-OcJQJEe2wH6qjprlFIw"/>
+    </ownedConnector>
+    <ownedConnector xmi:type="uml:Connector" xmi:id="_NI0ecJQOEe2wH6qjprlFIw" name="Connector2">
+      <end xmi:type="uml:ConnectorEnd" xmi:id="_NI0ecZQOEe2wH6qjprlFIw" partWithPort="_vxD-cJQGEe2wH6qjprlFIw" role="_KeQu8JQJEe2wH6qjprlFIw"/>
+      <end xmi:type="uml:ConnectorEnd" xmi:id="_NI0ecpQOEe2wH6qjprlFIw" role="_th_-gJQJEe2wH6qjprlFIw"/>
+    </ownedConnector>
+    <ownedConnector xmi:type="uml:Connector" xmi:id="_PIl90JQOEe2wH6qjprlFIw" name="Connector1">
+      <end xmi:type="uml:ConnectorEnd" xmi:id="_PIl90ZQOEe2wH6qjprlFIw" partWithPort="_osYawJQGEe2wH6qjprlFIw" role="_Mt52UJQJEe2wH6qjprlFIw"/>
+      <end xmi:type="uml:ConnectorEnd" xmi:id="_PIl90pQOEe2wH6qjprlFIw" role="_FbXc0JQJEe2wH6qjprlFIw"/>
+    </ownedConnector>
+    <ownedConnector xmi:type="uml:Connector" xmi:id="_cRpewJQOEe2wH6qjprlFIw" name="Connector6">
+      <end xmi:type="uml:ConnectorEnd" xmi:id="_cRpewZQOEe2wH6qjprlFIw" partWithPort="_1b7PgJQGEe2wH6qjprlFIw" role="_rDYnAJQJEe2wH6qjprlFIw"/>
+      <end xmi:type="uml:ConnectorEnd" xmi:id="_cRpewpQOEe2wH6qjprlFIw" partWithPort="_K-lfsJQHEe2wH6qjprlFIw" role="_Y_Qg8JQOEe2wH6qjprlFIw"/>
+    </ownedConnector>
+    <ownedConnector xmi:type="uml:Connector" xmi:id="_cyPqYJQOEe2wH6qjprlFIw" name="Connector5">
+      <end xmi:type="uml:ConnectorEnd" xmi:id="_cyPqYZQOEe2wH6qjprlFIw" partWithPort="_vxD-cJQGEe2wH6qjprlFIw" role="_qkUFYJQJEe2wH6qjprlFIw"/>
+      <end xmi:type="uml:ConnectorEnd" xmi:id="_cyQRcJQOEe2wH6qjprlFIw" partWithPort="_K-lfsJQHEe2wH6qjprlFIw" role="_ZeFyAJQOEe2wH6qjprlFIw"/>
+    </ownedConnector>
+    <ownedConnector xmi:type="uml:Connector" xmi:id="_dNh4MJQOEe2wH6qjprlFIw" name="Connector4">
+      <end xmi:type="uml:ConnectorEnd" xmi:id="_dNh4MZQOEe2wH6qjprlFIw" partWithPort="_osYawJQGEe2wH6qjprlFIw" role="_qMVqQJQJEe2wH6qjprlFIw"/>
+      <end xmi:type="uml:ConnectorEnd" xmi:id="_dNh4MpQOEe2wH6qjprlFIw" partWithPort="_K-lfsJQHEe2wH6qjprlFIw" role="_Z1wrIJQOEe2wH6qjprlFIw"/>
+    </ownedConnector>
+    <ownedConnector xmi:type="uml:Connector" xmi:id="_YCzDQJQPEe2wH6qjprlFIw" name="Connector11">
+      <end xmi:type="uml:ConnectorEnd" xmi:id="_YCzDQZQPEe2wH6qjprlFIw" partWithPort="_K-lfsJQHEe2wH6qjprlFIw" role="_GDEHQJQPEe2wH6qjprlFIw"/>
+      <end xmi:type="uml:ConnectorEnd" xmi:id="_YCzDQpQPEe2wH6qjprlFIw" partWithPort="_iXrQkJQIEe2wH6qjprlFIw" role="_XWuAYJQPEe2wH6qjprlFIw"/>
+    </ownedConnector>
+    <ownedConnector xmi:type="uml:Connector" xmi:id="_YiwVsJQPEe2wH6qjprlFIw" name="Connector10">
+      <end xmi:type="uml:ConnectorEnd" xmi:id="_YiwVsZQPEe2wH6qjprlFIw" partWithPort="_K-lfsJQHEe2wH6qjprlFIw" role="_Gb-9kJQPEe2wH6qjprlFIw"/>
+      <end xmi:type="uml:ConnectorEnd" xmi:id="_YiwVspQPEe2wH6qjprlFIw" partWithPort="_fxJ6QJQIEe2wH6qjprlFIw" role="_UiflQJQPEe2wH6qjprlFIw"/>
+    </ownedConnector>
+    <ownedConnector xmi:type="uml:Connector" xmi:id="_ZA1_4JQPEe2wH6qjprlFIw" name="Connector9">
+      <end xmi:type="uml:ConnectorEnd" xmi:id="_ZA1_4ZQPEe2wH6qjprlFIw" partWithPort="_K-lfsJQHEe2wH6qjprlFIw" role="_G0m48JQPEe2wH6qjprlFIw"/>
+      <end xmi:type="uml:ConnectorEnd" xmi:id="_ZA1_4pQPEe2wH6qjprlFIw" partWithPort="_enVLcJQIEe2wH6qjprlFIw" role="_UF_2gJQPEe2wH6qjprlFIw"/>
+    </ownedConnector>
+    <ownedConnector xmi:type="uml:Connector" xmi:id="_d3UmoJQPEe2wH6qjprlFIw" name="Connector8">
+      <end xmi:type="uml:ConnectorEnd" xmi:id="_d3UmoZQPEe2wH6qjprlFIw" partWithPort="_K-lfsJQHEe2wH6qjprlFIw" role="_HLzQ8JQPEe2wH6qjprlFIw"/>
+      <end xmi:type="uml:ConnectorEnd" xmi:id="_d3UmopQPEe2wH6qjprlFIw" partWithPort="_EkbqQJQIEe2wH6qjprlFIw" role="_TxlswJQPEe2wH6qjprlFIw"/>
+    </ownedConnector>
+    <ownedConnector xmi:type="uml:Connector" xmi:id="_hRnjQJQPEe2wH6qjprlFIw" name="Connector7">
+      <end xmi:type="uml:ConnectorEnd" xmi:id="_hRnjQZQPEe2wH6qjprlFIw" partWithPort="_K-lfsJQHEe2wH6qjprlFIw" role="_Hit8IJQPEe2wH6qjprlFIw"/>
+      <end xmi:type="uml:ConnectorEnd" xmi:id="_hRnjQpQPEe2wH6qjprlFIw" partWithPort="_-B7mkJQHEe2wH6qjprlFIw" role="_TCkqoJQPEe2wH6qjprlFIw"/>
+    </ownedConnector>
+    <ownedConnector xmi:type="uml:Connector" xmi:id="_uhrrIJQPEe2wH6qjprlFIw" name="Connector12">
+      <end xmi:type="uml:ConnectorEnd" xmi:id="_uhrrIZQPEe2wH6qjprlFIw" partWithPort="_-B7mkJQHEe2wH6qjprlFIw" role="_qBcaIJQPEe2wH6qjprlFIw"/>
+      <end xmi:type="uml:ConnectorEnd" xmi:id="_uhrrIpQPEe2wH6qjprlFIw" role="_3mjaYJQOEe2wH6qjprlFIw"/>
+    </ownedConnector>
+    <ownedConnector xmi:type="uml:Connector" xmi:id="_vJZycJQPEe2wH6qjprlFIw" name="Connector13">
+      <end xmi:type="uml:ConnectorEnd" xmi:id="_vJZycZQPEe2wH6qjprlFIw" role="_4snDgJQOEe2wH6qjprlFIw"/>
+      <end xmi:type="uml:ConnectorEnd" xmi:id="_vJZycpQPEe2wH6qjprlFIw" partWithPort="_EkbqQJQIEe2wH6qjprlFIw" role="_qhucsJQPEe2wH6qjprlFIw"/>
+    </ownedConnector>
+    <ownedConnector xmi:type="uml:Connector" xmi:id="_wghWYJQPEe2wH6qjprlFIw" name="Connector14">
+      <end xmi:type="uml:ConnectorEnd" xmi:id="_wghWYZQPEe2wH6qjprlFIw" partWithPort="_enVLcJQIEe2wH6qjprlFIw" role="_rAYHkJQPEe2wH6qjprlFIw"/>
+      <end xmi:type="uml:ConnectorEnd" xmi:id="_wghWYpQPEe2wH6qjprlFIw" role="_4ZodIJQOEe2wH6qjprlFIw"/>
+    </ownedConnector>
+    <ownedConnector xmi:type="uml:Connector" xmi:id="_xtuwYJQPEe2wH6qjprlFIw" name="Connector15">
+      <end xmi:type="uml:ConnectorEnd" xmi:id="_xtuwYZQPEe2wH6qjprlFIw" partWithPort="_fxJ6QJQIEe2wH6qjprlFIw" role="_raQAIJQPEe2wH6qjprlFIw"/>
+      <end xmi:type="uml:ConnectorEnd" xmi:id="_xtuwYpQPEe2wH6qjprlFIw" role="_3FLysJQOEe2wH6qjprlFIw"/>
+    </ownedConnector>
+    <ownedConnector xmi:type="uml:Connector" xmi:id="_ydTMIJQPEe2wH6qjprlFIw" name="Connector16">
+      <end xmi:type="uml:ConnectorEnd" xmi:id="_ydTMIZQPEe2wH6qjprlFIw" partWithPort="_iXrQkJQIEe2wH6qjprlFIw" role="_r_pMMJQPEe2wH6qjprlFIw"/>
+      <end xmi:type="uml:ConnectorEnd" xmi:id="_ydTMIpQPEe2wH6qjprlFIw" role="_2oCjsJQOEe2wH6qjprlFIw"/>
+    </ownedConnector>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_PhtFkJQHEe2wH6qjprlFIw" name="FireDetectionSystem" visibility="public">
+    <ownedAttribute xmi:type="uml:Port" xmi:id="_Lv-OcJQJEe2wH6qjprlFIw" name="Port1" type="_PhtFkJQHEe2wH6qjprlFIw" aggregation="composite"/>
+    <ownedAttribute xmi:type="uml:Port" xmi:id="_rDYnAJQJEe2wH6qjprlFIw" name="Port2" type="_PhtFkJQHEe2wH6qjprlFIw" aggregation="composite"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_Y3LnMJQHEe2wH6qjprlFIw" name="InternalButtonsDetectionSystem">
+    <ownedAttribute xmi:type="uml:Port" xmi:id="_KeQu8JQJEe2wH6qjprlFIw" name="Port1" type="_Y3LnMJQHEe2wH6qjprlFIw" aggregation="composite"/>
+    <ownedAttribute xmi:type="uml:Port" xmi:id="_qkUFYJQJEe2wH6qjprlFIw" name="Port2" type="_Y3LnMJQHEe2wH6qjprlFIw" aggregation="composite"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_cYWn4JQHEe2wH6qjprlFIw" name="ExternalButtonsDetectionSystem">
+    <ownedAttribute xmi:type="uml:Port" xmi:id="_Mt52UJQJEe2wH6qjprlFIw" name="Port1" type="_cYWn4JQHEe2wH6qjprlFIw" aggregation="composite"/>
+    <ownedAttribute xmi:type="uml:Port" xmi:id="_qMVqQJQJEe2wH6qjprlFIw" name="Port2" type="_cYWn4JQHEe2wH6qjprlFIw" aggregation="composite"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_rzv-4JQHEe2wH6qjprlFIw" name="CentralProcessor">
+    <ownedAttribute xmi:type="uml:Port" xmi:id="_Y_Qg8JQOEe2wH6qjprlFIw" name="Port3" type="_rzv-4JQHEe2wH6qjprlFIw" aggregation="composite"/>
+    <ownedAttribute xmi:type="uml:Port" xmi:id="_ZeFyAJQOEe2wH6qjprlFIw" name="Port2" type="_rzv-4JQHEe2wH6qjprlFIw" aggregation="composite"/>
+    <ownedAttribute xmi:type="uml:Port" xmi:id="_Z1wrIJQOEe2wH6qjprlFIw" name="Port1" type="_rzv-4JQHEe2wH6qjprlFIw" aggregation="composite"/>
+    <ownedAttribute xmi:type="uml:Port" xmi:id="_GDEHQJQPEe2wH6qjprlFIw" name="Port8" type="_rzv-4JQHEe2wH6qjprlFIw" aggregation="composite"/>
+    <ownedAttribute xmi:type="uml:Port" xmi:id="_Gb-9kJQPEe2wH6qjprlFIw" name="Port7" type="_rzv-4JQHEe2wH6qjprlFIw" aggregation="composite"/>
+    <ownedAttribute xmi:type="uml:Port" xmi:id="_G0m48JQPEe2wH6qjprlFIw" name="Port6" type="_rzv-4JQHEe2wH6qjprlFIw" aggregation="composite"/>
+    <ownedAttribute xmi:type="uml:Port" xmi:id="_HLzQ8JQPEe2wH6qjprlFIw" name="Port5" type="_rzv-4JQHEe2wH6qjprlFIw" aggregation="composite"/>
+    <ownedAttribute xmi:type="uml:Port" xmi:id="_Hit8IJQPEe2wH6qjprlFIw" name="Port4" type="_rzv-4JQHEe2wH6qjprlFIw" aggregation="composite"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_Ai5ugJQIEe2wH6qjprlFIw" name="DisplayFloorSystem">
+    <ownedAttribute xmi:type="uml:Port" xmi:id="_TCkqoJQPEe2wH6qjprlFIw" name="Port1" type="_Ai5ugJQIEe2wH6qjprlFIw" aggregation="composite"/>
+    <ownedAttribute xmi:type="uml:Port" xmi:id="_qBcaIJQPEe2wH6qjprlFIw" name="Port2" type="_Ai5ugJQIEe2wH6qjprlFIw" aggregation="composite"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_zG4_4JQIEe2wH6qjprlFIw" name="AlarmSystem">
+    <ownedAttribute xmi:type="uml:Port" xmi:id="_TxlswJQPEe2wH6qjprlFIw" name="Port1" type="_zG4_4JQIEe2wH6qjprlFIw" aggregation="composite"/>
+    <ownedAttribute xmi:type="uml:Port" xmi:id="_qhucsJQPEe2wH6qjprlFIw" name="Port2" type="_zG4_4JQIEe2wH6qjprlFIw" aggregation="composite"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_0HPCkJQIEe2wH6qjprlFIw" name="StopSystem">
+    <ownedAttribute xmi:type="uml:Port" xmi:id="_UF_2gJQPEe2wH6qjprlFIw" name="Port1" type="_0HPCkJQIEe2wH6qjprlFIw" aggregation="composite"/>
+    <ownedAttribute xmi:type="uml:Port" xmi:id="_rAYHkJQPEe2wH6qjprlFIw" name="Port2" type="_0HPCkJQIEe2wH6qjprlFIw" aggregation="composite"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_0029kJQIEe2wH6qjprlFIw" name="OpenDoorSystem">
+    <ownedAttribute xmi:type="uml:Port" xmi:id="_UiflQJQPEe2wH6qjprlFIw" name="Port1" type="_0029kJQIEe2wH6qjprlFIw" aggregation="composite"/>
+    <ownedAttribute xmi:type="uml:Port" xmi:id="_raQAIJQPEe2wH6qjprlFIw" name="Port2" type="_0029kJQIEe2wH6qjprlFIw" aggregation="composite"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_2hCykJQIEe2wH6qjprlFIw" name="ChangeModeSystem">
+    <ownedAttribute xmi:type="uml:Port" xmi:id="_XWuAYJQPEe2wH6qjprlFIw" name="Port1" type="_2hCykJQIEe2wH6qjprlFIw" aggregation="composite"/>
+    <ownedAttribute xmi:type="uml:Port" xmi:id="_r_pMMJQPEe2wH6qjprlFIw" name="Port2" type="_2hCykJQIEe2wH6qjprlFIw" aggregation="composite"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Interface" xmi:id="_inVLQJQKEe2wH6qjprlFIw" name="IExternalButtonsReception" visibility="public">
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_5q2xQJQKEe2wH6qjprlFIw" name="receiveDetectionExternalButtons ">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_F6k2cJQLEe2wH6qjprlFIw" name="msg">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </ownedParameter>
+    </ownedOperation>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Interface" xmi:id="_uB_QsJQKEe2wH6qjprlFIw" name="IExternalButtonsSending" visibility="protected">
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_J7fcQJQNEe2wH6qjprlFIw" name="sendMessageWhichExternalButtons" visibility="public">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_NZYfcJQNEe2wH6qjprlFIw" name="msg">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </ownedParameter>
+    </ownedOperation>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Usage" xmi:id="_hoIUQJRbEe2mFLx4NwEEog" client="_cYWn4JQHEe2wH6qjprlFIw" supplier="_UUJ9YJQGEe2wH6qjprlFIw"/>
+  <packagedElement xmi:type="uml:Realization" xmi:id="_nyHKQJRbEe2mFLx4NwEEog" client="_cYWn4JQHEe2wH6qjprlFIw" supplier="_uB_QsJQKEe2wH6qjprlFIw"/>
+  <packagedElement xmi:type="uml:Interface" xmi:id="_udePAJRbEe2mFLx4NwEEog" name="IInternalButtonsReception" visibility="public">
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_2i0lgJRbEe2mFLx4NwEEog" name="receiveDetectionInternalButtons ">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_2i0lgZRbEe2mFLx4NwEEog" name="msg">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </ownedParameter>
+    </ownedOperation>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Interface" xmi:id="_4u_iIJRbEe2mFLx4NwEEog" name="IInternalButtonsSending" visibility="public">
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_JqahcJRcEe2mFLx4NwEEog" name="sendMessageWhichInternalButtons ">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_JqahcZRcEe2mFLx4NwEEog" name="msg">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </ownedParameter>
+    </ownedOperation>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Usage" xmi:id="_B5meQJRhEe2PHusCqUKrWA" client="_Y3LnMJQHEe2wH6qjprlFIw" supplier="_udePAJRbEe2mFLx4NwEEog"/>
+  <packagedElement xmi:type="uml:Realization" xmi:id="_DW1RQJRhEe2PHusCqUKrWA" client="_Y3LnMJQHEe2wH6qjprlFIw" supplier="_4u_iIJRbEe2mFLx4NwEEog"/>
+  <packagedElement xmi:type="uml:Interface" xmi:id="_I1hukJRhEe2PHusCqUKrWA" name="IFireDectectionReception">
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_at9vwJRhEe2PHusCqUKrWA" name="receiveDetectionFireMessage ">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_at9vwZRhEe2PHusCqUKrWA" name="msg">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </ownedParameter>
+    </ownedOperation>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Interface" xmi:id="_TuNIUJRhEe2PHusCqUKrWA" name="IFireDetectionSending">
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_k5fIkJRhEe2PHusCqUKrWA" name="sendMessageStopElevator ">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_k5fIkZRhEe2PHusCqUKrWA" name="msg">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </ownedParameter>
+    </ownedOperation>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Usage" xmi:id="__IUM8JRhEe2PHusCqUKrWA" client="_PhtFkJQHEe2wH6qjprlFIw" supplier="_I1hukJRhEe2PHusCqUKrWA"/>
+  <packagedElement xmi:type="uml:Realization" xmi:id="_Aa2y4JRiEe2PHusCqUKrWA" client="_UUJ9YJQGEe2wH6qjprlFIw" supplier="_UUJ9YJQGEe2wH6qjprlFIw"/>
+  <packagedElement xmi:type="uml:Interface" xmi:id="_SkYkEJRiEe2PHusCqUKrWA" name="ICentralProcessorReceptionExtButtons" visibility="private">
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_kvvEwJRjEe2PHusCqUKrWA" name="receiveMessageWhichExternalButtons ">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_kvvEwZRjEe2PHusCqUKrWA" name="msg">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </ownedParameter>
+    </ownedOperation>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Interface" xmi:id="_OuNHQJRjEe2PHusCqUKrWA" name="ICentraleProcessorReceptionIntButtons">
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_sYyg0JRjEe2PHusCqUKrWA" name="receiveMessageWhichInternalButtons ">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_sYyg0ZRjEe2PHusCqUKrWA" name="msg">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </ownedParameter>
+    </ownedOperation>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Interface" xmi:id="_T3TvEJRjEe2PHusCqUKrWA" name="ICentralProcessorReceptionFireDetSys">
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_1AWMgJRjEe2PHusCqUKrWA" name="receiveMessageStopElevator ">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_1AWMgZRjEe2PHusCqUKrWA" name="msg">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </ownedParameter>
+    </ownedOperation>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Usage" xmi:id="_QiIGgJRkEe2PHusCqUKrWA" client="_rzv-4JQHEe2wH6qjprlFIw" supplier="_SkYkEJRiEe2PHusCqUKrWA"/>
+  <packagedElement xmi:type="uml:Usage" xmi:id="_SnwWQJRkEe2PHusCqUKrWA" client="_rzv-4JQHEe2wH6qjprlFIw" supplier="_OuNHQJRjEe2PHusCqUKrWA"/>
+  <packagedElement xmi:type="uml:Usage" xmi:id="_UKfUUJRkEe2PHusCqUKrWA" client="_rzv-4JQHEe2wH6qjprlFIw" supplier="_UUJ9YJQGEe2wH6qjprlFIw"/>
+  <packagedElement xmi:type="uml:Interface" xmi:id="_eLzoQJRkEe2PHusCqUKrWA" name="ICentralProcessorSendingDisplayFloor">
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_UhIIUJSIEe2nZObSsu7hYg" name="sendMessageDisplayFloor ">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_XRD5UJSIEe2nZObSsu7hYg" name="msg">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </ownedParameter>
+    </ownedOperation>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Interface" xmi:id="_FMb2QJSIEe2nZObSsu7hYg" name="ICentralProcessorSendingAlarm">
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_bAFv0JSIEe2nZObSsu7hYg" name="sendMessageAlarm ">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_doUWUJSIEe2nZObSsu7hYg" name="msg">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </ownedParameter>
+    </ownedOperation>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Interface" xmi:id="_JjOQUJSIEe2nZObSsu7hYg" name="ICentralProcessorSendingStop">
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_jQNL4JSIEe2nZObSsu7hYg" name="sendMessageStop ">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_jQNL4ZSIEe2nZObSsu7hYg" name="msg">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </ownedParameter>
+    </ownedOperation>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Interface" xmi:id="_Lcp3IJSIEe2nZObSsu7hYg" name="ICentralProcessorSendingDoorOpen">
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_ss_PYJSIEe2nZObSsu7hYg" name="sendMessageOpenDoor ">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_0ZSMsJSIEe2nZObSsu7hYg" name="msg">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </ownedParameter>
+    </ownedOperation>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Interface" xmi:id="_Oy8dgJSIEe2nZObSsu7hYg" name="ICentralProcessorSendingModeDetection">
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_5RPaIJSIEe2nZObSsu7hYg" name="sendMessageModeDetection ">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_5RPaIZSIEe2nZObSsu7hYg" name="msg">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </ownedParameter>
+    </ownedOperation>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Realization" xmi:id="_dzB8EJSJEe2nZObSsu7hYg" client="_UUJ9YJQGEe2wH6qjprlFIw" supplier="_eLzoQJRkEe2PHusCqUKrWA"/>
+  <packagedElement xmi:type="uml:Realization" xmi:id="_ea6bcJSJEe2nZObSsu7hYg" client="_UUJ9YJQGEe2wH6qjprlFIw" supplier="_FMb2QJSIEe2nZObSsu7hYg"/>
+  <packagedElement xmi:type="uml:Realization" xmi:id="_frujEJSJEe2nZObSsu7hYg" client="_UUJ9YJQGEe2wH6qjprlFIw" supplier="_JjOQUJSIEe2nZObSsu7hYg"/>
+  <packagedElement xmi:type="uml:Realization" xmi:id="_hY1lIJSJEe2nZObSsu7hYg" client="_rzv-4JQHEe2wH6qjprlFIw" supplier="_Lcp3IJSIEe2nZObSsu7hYg"/>
+  <packagedElement xmi:type="uml:Realization" xmi:id="_iDFcAJSJEe2nZObSsu7hYg" client="_rzv-4JQHEe2wH6qjprlFIw" supplier="_Oy8dgJSIEe2nZObSsu7hYg"/>
+  <packagedElement xmi:type="uml:Interface" xmi:id="_v5nG8JSJEe2nZObSsu7hYg" name="IDisplayFloorReception" visibility="protected">
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_l_03AJSMEe2nZObSsu7hYg" name="receiveMessageDisplayFloor ">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_l_03AZSMEe2nZObSsu7hYg" name="msg">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </ownedParameter>
+    </ownedOperation>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Usage" xmi:id="__0dkoJSKEe2nZObSsu7hYg" client="_Ai5ugJQIEe2wH6qjprlFIw" supplier="_UUJ9YJQGEe2wH6qjprlFIw"/>
+  <packagedElement xmi:type="uml:Interface" xmi:id="_3OhfAJSJEe2nZObSsu7hYg" name="IDisplayFloorSending">
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_IriBEJSNEe2nZObSsu7hYg" name="sendMessageDisplayFloor ">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_IriBEZSNEe2nZObSsu7hYg" name="msg">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </ownedParameter>
+    </ownedOperation>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Realization" xmi:id="_AvRnEJSLEe2nZObSsu7hYg" client="_Ai5ugJQIEe2wH6qjprlFIw" supplier="_3OhfAJSJEe2nZObSsu7hYg"/>
+  <packagedElement xmi:type="uml:Interface" xmi:id="_ztLfMJSJEe2nZObSsu7hYg" name="IAlarmReception">
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_sbsHMJSMEe2nZObSsu7hYg" name="receiveMessageAlarm ">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_sbsHMZSMEe2nZObSsu7hYg" name="msg">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </ownedParameter>
+    </ownedOperation>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Usage" xmi:id="_dg2VAJSLEe2nZObSsu7hYg" client="_zG4_4JQIEe2wH6qjprlFIw" supplier="_ztLfMJSJEe2nZObSsu7hYg"/>
+  <packagedElement xmi:type="uml:Interface" xmi:id="_4WLDkJSJEe2nZObSsu7hYg" name="IAlarmSending" visibility="public">
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_bdV6QJSNEe2nZObSsu7hYg" name="sendMessageAlarm ">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_bdV6QZSNEe2nZObSsu7hYg" name="msg">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </ownedParameter>
+    </ownedOperation>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Realization" xmi:id="_fHbRQJSLEe2nZObSsu7hYg" client="_zG4_4JQIEe2wH6qjprlFIw" supplier="_4WLDkJSJEe2nZObSsu7hYg"/>
+  <packagedElement xmi:type="uml:Interface" xmi:id="_5eTwUJSJEe2nZObSsu7hYg" name="IStopReception">
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_xGYUsJSMEe2nZObSsu7hYg" name="receiveMessageStop ">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_xGYUsZSMEe2nZObSsu7hYg" name="msg">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </ownedParameter>
+    </ownedOperation>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Usage" xmi:id="_4OSoAJSLEe2nZObSsu7hYg" client="_0HPCkJQIEe2wH6qjprlFIw" supplier="_5eTwUJSJEe2nZObSsu7hYg"/>
+  <packagedElement xmi:type="uml:Interface" xmi:id="_9bQHAJSJEe2nZObSsu7hYg" name="IStopSending">
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_gidZ8JSNEe2nZObSsu7hYg" name="sendMessageStop ">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_gidZ8ZSNEe2nZObSsu7hYg" name="msg">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </ownedParameter>
+    </ownedOperation>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Realization" xmi:id="_5fJy8JSLEe2nZObSsu7hYg" client="_0HPCkJQIEe2wH6qjprlFIw" supplier="_9bQHAJSJEe2nZObSsu7hYg"/>
+  <packagedElement xmi:type="uml:Interface" xmi:id="_-4nc4JSJEe2nZObSsu7hYg" name="IOpenDoorReception">
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_18WlIJSMEe2nZObSsu7hYg" name="receiveMessageOpenDoor ">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_18WlIZSMEe2nZObSsu7hYg" name="msg">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </ownedParameter>
+    </ownedOperation>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Usage" xmi:id="_JCK04JSMEe2nZObSsu7hYg" client="_0029kJQIEe2wH6qjprlFIw" supplier="_-4nc4JSJEe2nZObSsu7hYg"/>
+  <packagedElement xmi:type="uml:Interface" xmi:id="_A2vWcJSKEe2nZObSsu7hYg" name="IOpenDoorSending" visibility="public">
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_oBun4JSNEe2nZObSsu7hYg" name="sendMessageOpenDoor ">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_oBun4ZSNEe2nZObSsu7hYg" name="msg">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </ownedParameter>
+    </ownedOperation>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Realization" xmi:id="_QG8fMJSMEe2nZObSsu7hYg" client="_0029kJQIEe2wH6qjprlFIw" supplier="_A2vWcJSKEe2nZObSsu7hYg"/>
+  <packagedElement xmi:type="uml:Interface" xmi:id="_CLm3oJSKEe2nZObSsu7hYg" name="IChangeModeReception">
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_8p1JwJSMEe2nZObSsu7hYg" name="receiveMessageChangeMode ">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_8p1JwZSMEe2nZObSsu7hYg" name="msg">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </ownedParameter>
+    </ownedOperation>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Interface" xmi:id="_D2JG0JSKEe2nZObSsu7hYg" name="IChangeModeSending" visibility="protected">
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_sv94oJSNEe2nZObSsu7hYg" name="sendMessageChangeMode ">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_sv94oZSNEe2nZObSsu7hYg" name="msg">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </ownedParameter>
+    </ownedOperation>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Usage" xmi:id="_WmfVgJSMEe2nZObSsu7hYg" client="_2hCykJQIEe2wH6qjprlFIw" supplier="_CLm3oJSKEe2nZObSsu7hYg"/>
+  <packagedElement xmi:type="uml:Realization" xmi:id="_Xi7IkJSMEe2nZObSsu7hYg" client="_2hCykJQIEe2wH6qjprlFIw" supplier="_D2JG0JSKEe2nZObSsu7hYg"/>
+  <profileApplication xmi:type="uml:ProfileApplication" xmi:id="_EUp-WJQHEe2wH6qjprlFIw">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_EUzIQJQHEe2wH6qjprlFIw" source="http://www.eclipse.org/uml2/2.0.0/UML">
+      <references xmi:type="ecore:EPackage" href="pathmap://PAPYRUS_ACTIONLANGUAGE_PROFILE/ActionLanguage-Profile.profile.uml#_Kv8EIKFXEeS_KNX0nfvIVQ"/>
+    </eAnnotations>
+    <appliedProfile xmi:type="uml:Profile" href="pathmap://PAPYRUS_ACTIONLANGUAGE_PROFILE/ActionLanguage-Profile.profile.uml#ActionLanguage"/>
+  </profileApplication>
+</uml:Model>

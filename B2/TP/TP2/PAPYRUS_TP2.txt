@@ -1,0 +1,13 @@
+- Détection appuie des boutons extérieurs
+- Détection appuie des boutons intérieurs
+- FireDetectionSystem (entrée : données du capteur, sortie : signal arrêt du system pour le processeur)
+- Processeur central (entrée, détection appuie des boutons, sortie ==> ce que doit afficher le displayBouton)
+- displayFloor (de l'étage)
+- AlarmCommand
+- StopCommand
+- DoorOpenCommand
+- ModeDetectionSystem (3 modes) ==> "HOLD"
+	
+	- HoldCommand ==> PAS NECESSAIRE
+	- ServiceCommand ==> PAS NECESSAIRE
+	- AutoCommand ==> PAS NECESSAIRE

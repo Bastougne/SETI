@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Model xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xmi:id="_1n2d4ItOEe29EtnqcZ4hyw" name="MonProjet">
+  <ownedComment xmi:type="uml:Comment" xmi:id="_dU-L4I9LEe2gWrLTDAmWPA">
+    <body>Les acteurs sont les entités qui interagissent avec le système (contrôleur d'ascenseur). Dans notre cas, les acteurs sont (texte en jaune) :&#xD;
+- Le passager&#xD;
+- L'opérateur&#xD;
+- Le système de détection de feu</body>
+  </ownedComment>
+  <ownedComment xmi:type="uml:Comment" xmi:id="_E_IsoI9PEe2gWrLTDAmWPA">
+    <body>L'opérateur peut : &#xD;
+- Changer le mode du système (AUTO/HOLD/SERVICE)&#xD;
+- Mettre en marche / arrêter l'ascenseur</body>
+  </ownedComment>
+  <ownedComment xmi:type="uml:Comment" xmi:id="_yuOEkI9PEe2gWrLTDAmWPA">
+    <body>D'après le texte : &quot;Pour simplifier, on suppose que le système de détection d'incendie déclenche simplement un arrêt du système d'ascenseur en cas d'incendie&quot;</body>
+  </ownedComment>
+  <ownedComment xmi:type="uml:Comment" xmi:id="_NDOpcI9QEe2gWrLTDAmWPA">
+    <body>Le passager peut : &#xD;
+- Être récupéré par l'ascenseur (lorsque l'ascenseur est en mode &quot;AUTO&quot;, le mode &quot;HOLD&quot; ignore toute demande de prise en charge des passagers)&#xD;
+- Être déposé par l'ascenseur (lorsque l'ascenseur est en mode &quot;AUTO&quot; et &quot;HOLD&quot;)</body>
+  </ownedComment>
+  <ownedComment xmi:type="uml:Comment" xmi:id="_3M3vQI9REe2gWrLTDAmWPA">
+    <body>Nous avons décidé de relier les modes &quot;Hold&quot; et &quot;Service&quot; avec des flèches &quot;extend&quot; car nous pensons que ce sont des fonctionnalités optionnelles. Par exemple le mode &quot;Hold&quot; qui sert principalement pour les déménagements peut ne pas être présent sur un autre type d'ascenseur (optionnel). &#xD;
+Le mode &quot;Auto&quot; est, quant à lui, obligatoire donc nous avons utilisé une flèche &quot;include&quot;.</body>
+  </ownedComment>
+  <ownedComment xmi:type="uml:Comment" xmi:id="_Qe3_AI9SEe2gWrLTDAmWPA">
+    <body>Nous pensons que le mode &quot;AUTO&quot; est une fonctionnalité obligatoire et que le mode &quot;HOLD&quot; est une fonctionnalité optionnelle ce qui justifie l'emploi des flèches &quot;include&quot; et &quot;extend&quot;</body>
+  </ownedComment>
+  <packageImport xmi:type="uml:PackageImport" xmi:id="_1oVmEItOEe29EtnqcZ4hyw">
+    <importedPackage xmi:type="uml:Model" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#_0"/>
+  </packageImport>
+  <packagedElement xmi:type="uml:Actor" xmi:id="_a3bLYI9LEe2gWrLTDAmWPA" name="Passager"/>
+  <packagedElement xmi:type="uml:Actor" xmi:id="_9oOQ0I9LEe2gWrLTDAmWPA" name="Opérateur"/>
+  <packagedElement xmi:type="uml:Actor" xmi:id="_-tOxEI9LEe2gWrLTDAmWPA" name="Le système de détection de feu"/>
+  <packagedElement xmi:type="uml:UseCase" xmi:id="_Me_QwI9MEe2gWrLTDAmWPA" name="UC1 : Mettre l'ascenseur en marche"/>
+  <packagedElement xmi:type="uml:UseCase" xmi:id="_MrfbsI9MEe2gWrLTDAmWPA" name="UC2 : Mettre l'ascenseur à l'arrêt"/>
+  <packagedElement xmi:type="uml:UseCase" xmi:id="_7lXWUI9NEe2gWrLTDAmWPA" name="Changer l'ascenseur de mode">
+    <extend xmi:type="uml:Extend" xmi:id="_xSZcQI9OEe2gWrLTDAmWPA" extendedCase="_HqfVEI9OEe2gWrLTDAmWPA" extensionLocation="_xSZcQY9OEe2gWrLTDAmWPA"/>
+    <extend xmi:type="uml:Extend" xmi:id="_y5mDkI9OEe2gWrLTDAmWPA" extendedCase="_HXfgkI9OEe2gWrLTDAmWPA" extensionLocation="_y5mDkY9OEe2gWrLTDAmWPA"/>
+    <include xmi:type="uml:Include" xmi:id="_d9Z9gI9OEe2gWrLTDAmWPA" addition="_HIjssI9OEe2gWrLTDAmWPA"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_A9DzwI9OEe2gWrLTDAmWPA" memberEnd="_A9M9so9OEe2gWrLTDAmWPA _A9M9s49OEe2gWrLTDAmWPA">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_A9M9sI9OEe2gWrLTDAmWPA" source="org.eclipse.papyrus">
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_A9M9sY9OEe2gWrLTDAmWPA" key="nature" value="UML_Nature"/>
+    </eAnnotations>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_A9M9so9OEe2gWrLTDAmWPA" name="changer l'ascenseur de mode" type="_7lXWUI9NEe2gWrLTDAmWPA" association="_A9DzwI9OEe2gWrLTDAmWPA"/>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_A9M9s49OEe2gWrLTDAmWPA" name="opérateur" type="_9oOQ0I9LEe2gWrLTDAmWPA" association="_A9DzwI9OEe2gWrLTDAmWPA"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:UseCase" xmi:id="_HIjssI9OEe2gWrLTDAmWPA" name="UC3 : Mode &quot;Auto&quot;"/>
+  <packagedElement xmi:type="uml:UseCase" xmi:id="_HXfgkI9OEe2gWrLTDAmWPA" name="UC5 : Mode &quot;Service&quot;">
+    <extensionPoint xmi:type="uml:ExtensionPoint" xmi:id="_y5mDkY9OEe2gWrLTDAmWPA" name="ExtensionPoint1"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:UseCase" xmi:id="_HqfVEI9OEe2gWrLTDAmWPA" name="UC4 : Mode &quot;Hold&quot;">
+    <extensionPoint xmi:type="uml:ExtensionPoint" xmi:id="_xSZcQY9OEe2gWrLTDAmWPA" name="ExtensionPoint1"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_cyudoI9PEe2gWrLTDAmWPA" memberEnd="_cyudo49PEe2gWrLTDAmWPA _cyudpI9PEe2gWrLTDAmWPA">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_cyudoY9PEe2gWrLTDAmWPA" source="org.eclipse.papyrus">
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_cyudoo9PEe2gWrLTDAmWPA" key="nature" value="UML_Nature"/>
+    </eAnnotations>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_cyudo49PEe2gWrLTDAmWPA" name="uc2 : état à l'arrêt" type="_MrfbsI9MEe2gWrLTDAmWPA" association="_cyudoI9PEe2gWrLTDAmWPA"/>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_cyudpI9PEe2gWrLTDAmWPA" name="le système de détection de feu" type="_-tOxEI9LEe2gWrLTDAmWPA" association="_cyudoI9PEe2gWrLTDAmWPA"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_oYoJwI9PEe2gWrLTDAmWPA" memberEnd="_oYoJw49PEe2gWrLTDAmWPA _oYoJxI9PEe2gWrLTDAmWPA">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_oYoJwY9PEe2gWrLTDAmWPA" source="org.eclipse.papyrus">
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_oYoJwo9PEe2gWrLTDAmWPA" key="nature" value="UML_Nature"/>
+    </eAnnotations>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_oYoJw49PEe2gWrLTDAmWPA" name="uc1 : mettre l'ascenseur en marche" type="_Me_QwI9MEe2gWrLTDAmWPA" association="_oYoJwI9PEe2gWrLTDAmWPA"/>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_oYoJxI9PEe2gWrLTDAmWPA" name="opérateur" type="_9oOQ0I9LEe2gWrLTDAmWPA" association="_oYoJwI9PEe2gWrLTDAmWPA"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_o_8ocI9PEe2gWrLTDAmWPA" memberEnd="_o_8oc49PEe2gWrLTDAmWPA _o_8odI9PEe2gWrLTDAmWPA">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_o_8ocY9PEe2gWrLTDAmWPA" source="org.eclipse.papyrus">
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_o_8oco9PEe2gWrLTDAmWPA" key="nature" value="UML_Nature"/>
+    </eAnnotations>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_o_8oc49PEe2gWrLTDAmWPA" name="uc2 : mettre l'ascenseur à l'arrêt" type="_MrfbsI9MEe2gWrLTDAmWPA" association="_o_8ocI9PEe2gWrLTDAmWPA"/>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_o_8odI9PEe2gWrLTDAmWPA" name="opérateur" type="_9oOQ0I9LEe2gWrLTDAmWPA" association="_o_8ocI9PEe2gWrLTDAmWPA"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:UseCase" xmi:id="_ku3_YI9QEe2gWrLTDAmWPA" name="UC6 : Être récupérer par l'ascenseur (en mode &quot;AUTO&quot;)"/>
+  <packagedElement xmi:type="uml:UseCase" xmi:id="_ul8yMI9QEe2gWrLTDAmWPA" name="Être déposer">
+    <extend xmi:type="uml:Extend" xmi:id="_CqEAwI9REe2gWrLTDAmWPA" extendedCase="_4g8bsI9QEe2gWrLTDAmWPA" extensionLocation="_CqEAwY9REe2gWrLTDAmWPA"/>
+    <include xmi:type="uml:Include" xmi:id="_B3WxcI9REe2gWrLTDAmWPA" addition="_4Q50kI9QEe2gWrLTDAmWPA"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_0AsjoI9QEe2gWrLTDAmWPA" memberEnd="_0Asjo49QEe2gWrLTDAmWPA _0AsjpI9QEe2gWrLTDAmWPA">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_0AsjoY9QEe2gWrLTDAmWPA" source="org.eclipse.papyrus">
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_0Asjoo9QEe2gWrLTDAmWPA" key="nature" value="UML_Nature"/>
+    </eAnnotations>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_0Asjo49QEe2gWrLTDAmWPA" name="uc6 : être récupérer par l'ascenseur (en mode &quot;auto&quot;)" type="_ku3_YI9QEe2gWrLTDAmWPA" association="_0AsjoI9QEe2gWrLTDAmWPA"/>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_0AsjpI9QEe2gWrLTDAmWPA" name="passager" type="_a3bLYI9LEe2gWrLTDAmWPA" association="_0AsjoI9QEe2gWrLTDAmWPA"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:UseCase" xmi:id="_4Q50kI9QEe2gWrLTDAmWPA" name="UC7 : En mode &quot;AUTO&quot;"/>
+  <packagedElement xmi:type="uml:UseCase" xmi:id="_4g8bsI9QEe2gWrLTDAmWPA" name="UC8 : En mode &quot;HOLD&quot;">
+    <extensionPoint xmi:type="uml:ExtensionPoint" xmi:id="_CqEAwY9REe2gWrLTDAmWPA" name="ExtensionPoint1"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_--cqoI9QEe2gWrLTDAmWPA" memberEnd="_--cqo49QEe2gWrLTDAmWPA _--cqpI9QEe2gWrLTDAmWPA">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_--cqoY9QEe2gWrLTDAmWPA" source="org.eclipse.papyrus">
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_--cqoo9QEe2gWrLTDAmWPA" key="nature" value="UML_Nature"/>
+    </eAnnotations>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_--cqo49QEe2gWrLTDAmWPA" name="être déposer" type="_ul8yMI9QEe2gWrLTDAmWPA" association="_--cqoI9QEe2gWrLTDAmWPA"/>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_--cqpI9QEe2gWrLTDAmWPA" name="passager" type="_a3bLYI9LEe2gWrLTDAmWPA" association="_--cqoI9QEe2gWrLTDAmWPA"/>
+  </packagedElement>
+</uml:Model>

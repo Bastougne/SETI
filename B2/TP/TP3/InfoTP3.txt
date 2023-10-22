@@ -1,0 +1,3 @@
+guard = expression booléenne
+
+trigger ==> en fait
