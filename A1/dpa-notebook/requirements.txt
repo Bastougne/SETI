@@ -1,0 +1,4 @@
+tqdm
+matplotlib
+ipywidgets
+jupyter_contrib_nbextensions
